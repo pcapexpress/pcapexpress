@@ -78,11 +78,11 @@ section {
   margin: 0 auto !important;
 }
 
-/* 9. FOOTER CLEANUP */
+/* 9. FOOTER REMOVAL: Removes the "Hosted by GitHub" floating text */
 footer {
-  width: 100% !important;
-  float: none !important;
-  text-align: center !important;
-  color: #9BD7D1 !important;
-  padding: 30px 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
