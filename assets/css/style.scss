@@ -2,70 +2,72 @@
 ---
 @import "{{ site.theme }}";
 
-/* 1. LAYOUT: Center everything and remove the split-screen */
+/* 1. LAYOUT: Center everything and remove split-screen */
 .wrapper {
-  max-width: 1000px !important; /* Made it slightly wider for PCAP screenshots */
+  max-width: 1000px !important;
   margin: 0 auto !important;
   display: block !important;
 }
 
-/* 2. HEADER: Positioned at the top, centered, with Magenta line */
+/* 2. COLORS: Dark Mode using your specific Palette */
+body {
+  background-color: #2D142C !important; /* Deep Purple (Background) */
+  color: #ffffff !important;           /* White Text for readability */
+}
+
+/* 3. HEADER: The top navigation box */
 header {
   width: 100% !important;
   float: none !important;
   position: relative !important;
   text-align: center !important;
-  background-color: #1a1a1a !important; /* Slightly darker than body for depth */
+  background-color: #510A32 !important; /* Dark Plum (Header Background) */
   padding: 30px 20px !important;
   margin-bottom: 40px !important;
-  border-bottom: 2px solid #ff00ff !important; /* Magenta Pink Border */
+  border-bottom: 3px solid #801336 !important; /* Claret Wine (Border) */
 }
 
-/* 3. NAVIGATION: Horizontal links in the header */
-header ul {
-  display: flex !important;
-  justify-content: center !important;
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 15px 0 0 0 !important;
+/* 4. HEADINGS: High contrast reds */
+h1, h2 {
+  color: #C72C41 !important;           /* Crimson Red (Main Headers) */
 }
 
-header li {
-  margin: 0 15px !important;
+h3, h4 {
+  color: #801336 !important;           /* Claret Wine (Sub-headers) */
 }
 
+/* 5. NAVIGATION & LINKS: Brightest color for visibility */
 header a {
-  color: #ff00ff !important; /* Magenta Pink links */
+  color: #EE4540 !important;           /* Bright Coral (Nav Links) */
   text-decoration: none !important;
   font-weight: bold !important;
+  padding: 5px 10px;
 }
 
 header a:hover {
-  color: #ffffff !important; /* Turns white when you hover over it */
+  color: #ffffff !important;           /* White on hover */
+  background-color: #801336 !important; /* Wine background on hover */
+  border-radius: 5px;
 }
 
-/* 4. SECTION: Main content area centering */
+a {
+  color: #EE4540 !important;           /* Bright Coral (Body Links) */
+}
+
+/* 6. MAIN CONTENT AREA */
 section {
   width: 100% !important;
   float: none !important;
   margin: 0 auto !important;
 }
 
-/* 5. COLORS: Dark mode and typography */
-body {
-  background-color: #2D142C !important; /* Your Deep Purple */
-  color: #fEFAD4 !important;           /* Off White Text */
-}
-
-h1, h2, h3, h4 {
-  color: #C72C41 !important;           /* Sunset Orange Headings */
-}
-
-a {
-  color: #EE4540;                      /* Sunset Orange for links in your reports */
-}
-
-/* Remove the GitHub/Theme footer entirely */
+/* 7. FOOTER: Cleanup */
 footer {
-  display: none !important;
+  width: 100% !important;
+  float: none !important;
+  text-align: center !important;
+  border-top: 1px solid #510A32 !important;
+  margin-top: 50px !important;
+  padding: 20px 0 !important;
+  color: #801336 !important;
 }
