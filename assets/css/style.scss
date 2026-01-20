@@ -2,74 +2,83 @@
 ---
 @import "{{ site.theme }}";
 
+/* 1. LAYOUT: Center everything */
 .wrapper {
   max-width: 1000px !important;
   margin: 0 auto !important;
   display: block !important;
 }
 
+/* 2. COLORS: Swapped to Slate Blue Background */
 body {
-  background-color: #325D79 !important;
-  color: #EFEEEE !important;
+  background-color: #325D79 !important; /* Deep Slate Blue (Background) */
+  color: #EFEEEE !important;           /* Soft White (Main Text) */
 }
 
+/* 3. HEADER: Slightly lighter or darker blue to define the top */
 header {
   width: 100% !important;
   float: none !important;
   position: relative !important;
   text-align: center !important;
-  background-color: #26465c !important;
+  background-color: #26465c !important; /* Darker navy for the header box */
   padding: 40px 20px !important;
   margin-bottom: 40px !important;
-  border-bottom: 4px solid #F26627 !important;
+  border-bottom: 4px solid #F26627 !important; /* Orange accent line */
 }
 
+/* 4. HEADINGS: Keeping them bright white/teal for contrast */
 h1, h2 {
-  color: #ffffff !important;
+  color: #ffffff !important; 
 }
 
 h3, h4 {
-  color: #9BD7D1 !important;
+  color: #9BD7D1 !important; /* Muted Teal for sub-sections */
 }
 
+/* 5. NAVIGATION: Orange links at the top */
 header a {
-  color: #F26627 !important;
+  color: #F26627 !important;           /* Safety Orange */
   text-decoration: none !important;
   font-weight: bold !important;
   margin: 0 10px;
 }
 
 header a:hover {
-  color: #9BD7D1 !important;
+  color: #9BD7D1 !important;           /* Turns Teal on hover */
 }
 
+/* 6. LINKS & BUTTONS: Orange pop in the body */
 a {
-  color: #F26627 !important;
+  color: #F26627 !important;           
   text-decoration: none;
   font-weight: bold;
 }
 
 a:hover {
-  color: #F9A26C !important;
+  color: #F9A26C !important;           /* Softens to Peach on hover */
   text-decoration: underline;
 }
 
+/* 7. PROJECT LIST STYLING: Making them look like "Project Cards" */
 ul li {
   list-style: none;
-  background: #26465c;
+  background: #26465c;                 /* Darker blue box */
   margin-bottom: 12px;
   padding: 20px;
-  border-left: 5px solid #F26627;
+  border-left: 5px solid #F26627;      /* Bold Orange tab */
   border-radius: 4px;
   color: #EFEEEE;
 }
 
+/* 8. MAIN CONTENT AREA */
 section {
   width: 100% !important;
   float: none !important;
   margin: 0 auto !important;
 }
 
+/* 9. FOOTER CLEANUP */
 footer {
   width: 100% !important;
   float: none !important;
