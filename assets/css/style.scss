@@ -2,72 +2,78 @@
 ---
 @import "{{ site.theme }}";
 
-/* 1. LAYOUT: Center everything and remove split-screen */
+/* 1. LAYOUT: Center everything */
 .wrapper {
   max-width: 1000px !important;
   margin: 0 auto !important;
   display: block !important;
 }
 
-/* 2. COLORS: Dark Mode using your specific Palette */
+/* 2. COLORS: Clean & Bright Palette */
 body {
-  background-color: #2D142C !important; /* Deep Purple (Background) */
-  color: #ffffff !important;           /* White Text for readability */
+  background-color: #EFEEEE !important; /* Soft White (Background) */
+  color: #325D79 !important;           /* Deep Slate Blue (Main Text) */
 }
 
-/* 3. HEADER: The top navigation box */
+/* 3. HEADER: Professional Slate Blue bar */
 header {
   width: 100% !important;
   float: none !important;
   position: relative !important;
   text-align: center !important;
-  background-color: #510A32 !important; /* Dark Plum (Header Background) */
-  padding: 30px 20px !important;
+  background-color: #325D79 !important; /* Deep Slate Blue (Header) */
+  padding: 40px 20px !important;
   margin-bottom: 40px !important;
-  border-bottom: 3px solid #801336 !important; /* Claret Wine (Border) */
+  border-bottom: 5px solid #9BD7D1 !important; /* Muted Teal (Accent line) */
 }
 
-/* 4. HEADINGS: High contrast reds */
-h1, h2 {
-  color: #C72C41 !important;           /* Crimson Red (Main Headers) */
+/* Change Header Title and Description to White for contrast */
+header h1 a, header p {
+  color: #EFEEEE !important;
 }
 
-h3, h4 {
-  color: #801336 !important;           /* Claret Wine (Sub-headers) */
+/* 4. HEADINGS: Slate Blue for a crisp look */
+h1, h2, h3, h4 {
+  color: #325D79 !important; 
+  border-bottom: 1px solid #9BD7D1; /* Subtle teal underline for sections */
+  padding-bottom: 5px;
 }
 
-/* 5. NAVIGATION & LINKS: Brightest color for visibility */
+/* 5. NAVIGATION: Vibrant Orange for attention */
 header a {
-  color: #EE4540 !important;           /* Bright Coral (Nav Links) */
+  color: #F9A26C !important;           /* Peach (Nav Links) */
   text-decoration: none !important;
   font-weight: bold !important;
-  padding: 5px 10px;
 }
 
 header a:hover {
-  color: #ffffff !important;           /* White on hover */
-  background-color: #801336 !important; /* Wine background on hover */
-  border-radius: 5px;
+  color: #F26627 !important;           /* Safety Orange on hover */
 }
 
+/* 6. LINKS: Safety Orange in body text */
 a {
-  color: #EE4540 !important;           /* Bright Coral (Body Links) */
+  color: #F26627 !important;           
+  text-decoration: underline;
 }
 
-/* 6. MAIN CONTENT AREA */
+a:hover {
+  color: #325D79 !important;
+}
+
+/* 7. PROJECT CARDS: Special styling for your project list */
+ul li {
+  list-style: none;
+  background: #ffffff;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-left: 5px solid #F26627;      /* Orange "tab" look */
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 8. MAIN CONTENT AREA */
 section {
   width: 100% !important;
   float: none !important;
   margin: 0 auto !important;
-}
-
-/* 7. FOOTER: Cleanup */
-footer {
-  width: 100% !important;
-  float: none !important;
-  text-align: center !important;
-  border-top: 1px solid #510A32 !important;
-  margin-top: 50px !important;
-  padding: 20px 0 !important;
-  color: #801336 !important;
 }
