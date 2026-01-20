@@ -2,76 +2,65 @@
 ---
 @import "{{ site.theme }}";
 
-/* 1. Reset the "Split" layout to a single column */
+/* 1. LAYOUT: Center everything and remove the split-screen */
 .wrapper {
-  max-width: 900px; /* Limits width so it's not stretched too far */
-  margin: 0 auto;   /* Centers the entire page container */
-  display: block;   /* Removes the side-by-side flex behavior */
+  max-width: 1000px !important; /* Made it slightly wider for PCAP screenshots */
+  margin: 0 auto !important;
+  display: block !important;
 }
 
-/* 2. Turn the Sidebar into a Top Header */
+/* 2. HEADER: Positioned at the top, centered, with Magenta line */
 header {
   width: 100% !important;
   float: none !important;
   position: relative !important;
-  text-align: center;      /* Centers your title and description */
-  padding-bottom: 20px;
-  border-bottom: 2px solid #ff00ff; /* Your Magenta Pink line */
-  margin-bottom: 30px;
+  text-align: center !important;
+  background-color: #1a1a1a !important; /* Slightly darker than body for depth */
+  padding: 30px 20px !important;
+  margin-bottom: 40px !important;
+  border-bottom: 2px solid #ff00ff !important; /* Magenta Pink Border */
 }
 
-/* 3. Make the links (Navigation) stay in a thin horizontal row */
+/* 3. NAVIGATION: Horizontal links in the header */
 header ul {
-  display: flex;
-  justify-content: center; /* Centers links horizontally */
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
+  display: flex !important;
+  justify-content: center !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 15px 0 0 0 !important;
 }
 
 header li {
-  margin: 0 15px; /* Adds spacing between links */
+  margin: 0 15px !important;
 }
 
-/* 4. Center the main content area */
+header a {
+  color: #ff00ff !important; /* Magenta Pink links */
+  text-decoration: none !important;
+  font-weight: bold !important;
+}
+
+header a:hover {
+  color: #ffffff !important; /* Turns white when you hover over it */
+}
+
+/* 4. SECTION: Main content area centering */
 section {
   width: 100% !important;
   float: none !important;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
-/*COLOR SECTION */
-
-/* 1. Set the background to Dark Gray and text to White */
+/* 5. COLORS: Dark mode and typography */
 body {
   background-color: #2e2e2e !important; /* Dark Gray */
   color: #ffffff !important;           /* White Text */
 }
 
-/* 2. Change Chapter Names (Headings) to Magenta Pink */
 h1, h2, h3, h4 {
-  color: #ff00ff !important; /* Magenta Pink */
+  color: #ff00ff !important;           /* Magenta Pink Headings */
 }
 
-/* 3. Ensure links are readable against the dark background */
 a {
-  color: #00d4ff; /* A bright cyan for contrast */
-}
-
-/* 4. Style the "Site Header" area */
-header {
-  border-bottom: 1px solid #ff00ff;
-}
-
-/* Style the navigation header */
-header {
-    background-color: #1a1a1a; /* Dark background */
-    padding: 20px;
-}
-
-header a {
-    color: #ff00ff !important; /* Magenta Pink */
-    margin-right: 15px;
-    text-decoration: none;
-    font-weight: bold;
+  color: #00d4ff;                      /* Cyan for links in your reports */
 }
