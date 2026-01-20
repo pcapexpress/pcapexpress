@@ -1,1 +1,10 @@
 theme: jekyll-theme-minimal
+title: PcapExpress Portfolio
+description: Network Forensics & IDS Analysis
+
+# This creates the navigation menu at the top
+header_pages:
+  - index.md
+  - pcap-investigation.md
+  - malware-analysis.md
+  - about.md
