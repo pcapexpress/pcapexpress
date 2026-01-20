@@ -1,16 +1,21 @@
-## Hi there 👋
+# [Your Name] | Cybersecurity Analyst
+> Specialized in Network Forensics & IDS Alert Validation
 
-<!--
-**pcapexpress/pcapexpress** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+---
 
-Here are some ideas to get you started:
+## 🛡️ Project Portfolio
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### [PCAP Analysis: SMB & NTLM False Positive Investigation](./pcap-investigation.md)
+*Deep-dive analysis of legacy IDS signatures (GPL) vs. modern Windows 10/11 traffic.*
+
+### [Network Hardening: SMBv1 Identification](./smb-hardening.md)
+*Using Wireshark to identify insecure protocols and proposing remediation steps.*
+
+---
+
+## 🛠️ Skills
+* **Tools:** Wireshark, Snort, Suricata, Zeek, Nmap.
+* **Protocols:** TCP/IP, SMB, NTLM, Kerberos, DNS, HTTP/S.
+* **Analysis:** Traffic Analysis, False Positive Reduction, Log Correlation.
+
+[Link to LinkedIn] | [Download Resume (PDF)]
