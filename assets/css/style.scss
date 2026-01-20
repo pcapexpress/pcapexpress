@@ -9,63 +9,63 @@
   display: block !important;
 }
 
-/* 2. COLORS: Steel Blue with Soft Orange Text */
+/* 2. COLORS: Deep Slate with Yellow Text */
 body {
-  background-color: #475C7A !important; /* Steel Blue Background */
-  color: #FCBB6D !important;           /* Soft Orange Text */
+  background-color: #344E5C !important; /* Deep Slate Blue */
+  color: #EFC958 !important;           /* Sunflower Yellow */
 }
 
-/* 3. HEADER: Deep Lavender bar */
+/* 3. HEADER: Defining the top section */
 header {
   width: 100% !important;
   float: none !important;
   position: relative !important;
   text-align: center !important;
-  background-color: #685D79 !important; /* Deep Lavender Header */
+  background-color: #2a3f4a !important; /* Slightly darker slate */
   padding: 40px 20px !important;
   margin-bottom: 40px !important;
-  border-bottom: 4px solid #AB6C82 !important; /* Antique Plum accent */
+  border-bottom: 4px solid #4AB19D !important; /* Persian Green accent */
 }
 
-/* 4. HEADINGS: Muted Pinks and Plums */
+/* 4. HEADINGS: High energy Red and Green */
 h1, h2 {
-  color: #D8737F !important; /* Dusty Rose */
+  color: #EF3D59 !important; /* Strawberry Red */
 }
 
 h3, h4 {
-  color: #AB6C82 !important; /* Antique Plum */
+  color: #4AB19D !important; /* Persian Green */
 }
 
-/* 5. NAVIGATION: Using the background color for link contrast */
+/* 5. NAVIGATION: Burnt Orange links */
 header a {
-  color: #FCBB6D !important; 
+  color: #E17A47 !important; /* Burnt Orange */
   text-decoration: none !important;
   font-weight: bold !important;
   margin: 0 10px;
 }
 
 header a:hover {
-  color: #ffffff !important; 
+  color: #EFC958 !important; /* Switch to Yellow on hover */
 }
 
-/* 6. LINKS: Dusty Rose in body text */
+/* 6. LINKS: Body links in Orange */
 a {
-  color: #D8737F !important;           
+  color: #E17A47 !important;           
   text-decoration: underline;
   font-weight: bold;
 }
 
 a:hover {
-  color: #FCBB6D !important;
+  color: #4AB19D !important; /* Switch to Green on hover */
 }
 
-/* 7. PROJECT CARDS: Lavender boxes */
+/* 7. PROJECT CARDS: Keeping the card style */
 ul li {
   list-style: none;
-  background: #685D79;                 
+  background: #2a3f4a;                 
   margin-bottom: 12px;
   padding: 20px;
-  border-left: 5px solid #D8737F;      /* Dusty Rose tab */
+  border-left: 5px solid #EF3D59;      /* Red tab */
   border-radius: 4px;
 }
 
