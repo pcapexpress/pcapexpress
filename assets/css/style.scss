@@ -7,3 +7,16 @@ a { color: #007acc; }
 
 /* Change your header colors here */
 h1, h2, h3 { color: #333; }
+
+/* Style the navigation header */
+header {
+    background-color: #1a1a1a; /* Dark background */
+    padding: 20px;
+}
+
+header a {
+    color: #00ff00; /* Neon green "Hacker" look */
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
