@@ -77,3 +77,8 @@ section {
   float: none !important;
   margin: 0 auto !important;
 }
+
+/* Remove the GitHub/Theme footer entirely */
+footer {
+  display: none !important;
+}
