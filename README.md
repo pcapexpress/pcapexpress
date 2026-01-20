@@ -1,12 +1,13 @@
-# [Your Name] | Cybersecurity Analyst
-> Specialized in Network Forensics & IDS Alert Validation
+# [Andy Anderson] | Asspiering Cybersecurity Analyst
+> Learning to specialize in Network Forensics using Wireshark & IDS Alert Corelation
 
 ---
 
 ## Project Portfolio
 
-### [PCAP Analysis: SMB & NTLM False Positive Investigation](./pcap-investigation.md)
+### [PCAP EXPRESS SERIES: Exercise 01 ](./01.WireShark.md)
 *Deep-dive analysis of legacy IDS signatures (GPL) vs. modern Windows 10/11 traffic.*
+
 
 ### [Network Hardening: SMBv1 Identification](./smb-hardening.md)
 *Using Wireshark to identify insecure protocols and proposing remediation steps.*
