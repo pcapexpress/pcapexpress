@@ -9,10 +9,10 @@
   display: block !important;
 }
 
-/* 2. COLORS: Deep Slate with Yellow Text */
+/* 2. COLORS: Deep Plum with Golden Text */
 body {
-  background-color: #344E5C !important; /* Deep Slate Blue */
-  color: #EFC958 !important;           /* Sunflower Yellow */
+  background-color: #582841 !important; /* Deep Plum Background */
+  color: #F99E4C !important;           /* Golden Orange Text */
 }
 
 /* 3. HEADER: Defining the top section */
@@ -21,51 +21,51 @@ header {
   float: none !important;
   position: relative !important;
   text-align: center !important;
-  background-color: #2a3f4a !important; /* Slightly darker slate */
+  background-color: #451e33 !important; /* Slightly darker plum */
   padding: 40px 20px !important;
   margin-bottom: 40px !important;
-  border-bottom: 4px solid #4AB19D !important; /* Persian Green accent */
+  border-bottom: 4px solid #CC2A49 !important; /* Deep Raspberry accent */
 }
 
-/* 4. HEADINGS: High energy Red and Green */
+/* 4. HEADINGS: Volcanic Reds and Oranges */
 h1, h2 {
-  color: #EF3D59 !important; /* Strawberry Red */
+  color: #EF4648 !important; /* Electric Red */
 }
 
 h3, h4 {
-  color: #4AB19D !important; /* Persian Green */
+  color: #F36F38 !important; /* Sunset Orange */
 }
 
-/* 5. NAVIGATION: Burnt Orange links */
+/* 5. NAVIGATION: Raspberry links */
 header a {
-  color: #E17A47 !important; /* Burnt Orange */
+  color: #CC2A49 !important; /* Deep Raspberry */
   text-decoration: none !important;
   font-weight: bold !important;
   margin: 0 10px;
 }
 
 header a:hover {
-  color: #EFC958 !important; /* Switch to Yellow on hover */
+  color: #F99E4C !important; /* Switch to Gold on hover */
 }
 
-/* 6. LINKS: Body links in Orange */
+/* 6. LINKS: Body links */
 a {
-  color: #E17A47 !important;           
+  color: #CC2A49 !important;           
   text-decoration: underline;
   font-weight: bold;
 }
 
 a:hover {
-  color: #4AB19D !important; /* Switch to Green on hover */
+  color: #EF4648 !important; /* Switch to Red on hover */
 }
 
-/* 7. PROJECT CARDS: Keeping the card style */
+/* 7. PROJECT CARDS: Glowing border style */
 ul li {
   list-style: none;
-  background: #2a3f4a;                 
+  background: #451e33;                 
   margin-bottom: 12px;
   padding: 20px;
-  border-left: 5px solid #EF3D59;      /* Red tab */
+  border-left: 5px solid #EF4648;      /* Electric Red tab */
   border-radius: 4px;
 }
 
@@ -80,4 +80,11 @@ section {
 footer {
   display: none !important;
   visibility: hidden !important;
+}
+
+/* 10. IMAGE STYLING: Matching the palette */
+img {
+  border: 2px solid #CC2A49; 
+  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
