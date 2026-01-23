@@ -1,3 +1,65 @@
+---
+---
+@import "{{ site.theme }}";
+
+// PCAPEXPRESS CUSTOM PALETTE
+$slate: #344E5C;   // Background
+$yellow: #EFC958;  // Body Text
+$red: #EF3D59;     // H1 & H2
+$green: #4AB19D;   // H3 & H4
+$orange: #E17A47;  // Links
+
+/* 1. REMOVE ALL IMAGES & SET BACKGROUND */
+body {
+  background-color: $slate !important;
+  background-image: none !important; /* Forces removal of any previous images */
+  color: $yellow !important;
+}
+
+/* 2. STYLE THE HEADER AREA (No Train) */
+header {
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom: 2px solid $red !important;
+  padding-bottom: 20px !important;
+
+  h1 a {
+    color: $red !important;
+    text-decoration: none;
+  }
+}
+
+/* 3. CONTENT AREA TEXT COLORS */
+h1, h2 { 
+  color: $red !important; 
+}
+
+h3, h4 { 
+  color: $green !important; 
+}
+
+p, li, div { 
+  color: $yellow !important; 
+}
+
+/* 4. LINKS & INTERACTIVE ELEMENTS */
+a {
+  color: $orange !important;
+  font-weight: bold;
+}
+
+a:hover {
+  color: lighten($orange, 10%) !important;
+  text-decoration: underline;
+}
+
+/* 5. CODE BLOCKS (Keeps the DFIR terminal look) */
+pre, code {
+  background: #1a1a1a !important;
+  color: $green !important;
+  border: 1px solid $slate;
+}
+
 /* --- STACK SIDEBAR ON TOP AS A HEADER --- */
 .wrapper {
   display: flex !important;
