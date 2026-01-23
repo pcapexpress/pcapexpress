@@ -9,13 +9,6 @@ $red: #EF3D59;     // H1 & H2
 $green: #4AB19D;   // H3 & H4
 $orange: #E17A47;  // Links
 
-/* 1. REMOVE ALL IMAGES & SET BACKGROUND */
-body {
-  background-color: $slate !important;
-  background-image: none !important; /* Forces removal of any previous images */
-  color: $yellow !important;
-}
-
 /* --- ENHANCED DARK HEADER --- */
 header {
   /* This color is several shades darker than your main slate (#344E5C) */
@@ -55,6 +48,30 @@ header .view {
 /* Optional: Hide the GitHub Avatar image */
 header img {
   display: none !important;
+}
+
+/* Make the header stretch to the absolute edges */
+body {
+  padding: 0 !important;
+}
+
+.wrapper {
+  max-width: 100% !important; /* This allows the header to span the screen */
+  padding: 0 !important;
+}
+
+/* Keep the actual TEXT content centered and narrow for readability */
+section {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 40px 20px !important;
+}
+
+/* 1. REMOVE ALL IMAGES & SET BACKGROUND */
+body {
+  background-color: $slate !important;
+  background-image: none !important; /* Forces removal of any previous images */
+  color: $yellow !important;
 }
 
 /* 3. CONTENT AREA TEXT COLORS */
