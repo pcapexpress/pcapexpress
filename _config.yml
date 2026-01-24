@@ -1,4 +1,4 @@
-title: PCAPEXPRESS
+title: PcapExpress
 description: A place to observe and reflect on packets passing by
 theme: jekyll-theme-minimal
 description: >
@@ -9,3 +9,4 @@ description: >
     <li><a href="/malware-analysis">Malware</a></li>
     <li><a href="/about">About</a></li>
   </ul>
+  footer_text: "© 2026 PcapExpress | In the name of Upward Mobility"
