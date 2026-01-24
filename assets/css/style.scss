@@ -192,13 +192,10 @@ footer {
   /* SLIM SETTING: Reducing padding to 8px top/bottom makes it very thin */
   padding: 8px 20px !important; 
 
-  background: 
-    linear-gradient(
-      to bottom, 
-      rgba(26, 39, 46, 0.20) 80%, 
-      rgba(26, 39, 46, 0.85) 100%
-    ), 
+ background: 
+    linear-gradient(rgba(26, 39, 46, 0.80), rgba(26, 39, 46, 0.80)), 
     url("../images/footer.png") no-repeat center center !important;
+  background-size: cover !important;
   
   /* THIS COVERS THE ENTIRE BAR */
   background-size: cover !important; 
