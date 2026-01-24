@@ -181,36 +181,26 @@ footer small { /* Hides the "Hosted on GitHub" text specifically */
   display: none !important;
 }
 
-/* --- 9. COMPACT BOXED FOOTER --- */
+// 9. COMPACT HALF-WIDTH FOOTER
 footer {
   display: block !important; 
-  
-  /* HALF WIDTH: 50% of your 900px layout */
-  max-width: 450px !important; 
+  max-width: 450px !important; /* Half width of header */
   width: 100% !important;
-  
-  /* CENTERING & SPACING */
   position: relative !important;
-  margin: 40px auto 60px auto !important; 
+  margin: 20px auto 40px auto !important; 
+  padding: 25px 20px !important; /* Approx 3 lines thick */
   
-  /* THICKNESS: 30px top/bottom roughly equals 3 lines of text height */
-  padding: 30px 20px !important; 
-  
-  background-color: #1A272E !important; 
+  background-color: $dark-bg !important; 
   border-top: 3px solid $red !important; 
-  border-radius: 8px; /* Fully rounded box look since it's narrower */
-  
+  border-radius: 8px; 
   text-align: center !important;
-  box-sizing: border-box !important;
-  clear: both !important;
 }
 
-/* FOOTER TEXT STYLE */
 footer:after {
-  content: "© 2026 PcapExpress \A Digital Forensics Specialist \A Network Security";
-  white-space: pre; /* Allows the '\A' to create actual new lines */
+  content: "© 2026 PcapExpress | Patience | Upward Mobility |";
+  white-space: pre; 
   color: $green !important;
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
-  line-height: 1.5; /* Adds spacing between the 3 lines */
+  line-height: 1.4;
 }
