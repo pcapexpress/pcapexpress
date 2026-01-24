@@ -19,48 +19,35 @@ body {
   padding: 0 !important;
 }
 
-/* --- WRAPPER ADJUSTMENT --- */
 .wrapper {
   display: block !important;
   max-width: 100% !important;
-  /* Ensuring the wrapper doesn't force a side-by-side flex layout */
-}
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-// 3. HEADER ARCHITECTURE
-
-/* --- REFINED BOXED HEADER WITH BACKGROUND --- */
+// 3. HEADER ARCHITECTURE (BOXED)
 header {
-  /* 1. MATCH BODY LENGTH */
-  max-width: 900px !important;    /* Matches your section width */
-  margin: 0 auto 30px auto !important; /* Centers the header and adds bottom gap */
+  max-width: 900px !important;    
+  margin: 0 auto 30px auto !important; 
   width: 100% !important;
+  display: block !important;
+  float: none !important;
+  clear: both !important;
   
-  /* 2. BACKGROUND IMAGE WITH GRAY OPACITY OVERLAY */
-  /* The rgba(40, 44, 52, 0.8) is a dark gray with 80% opacity */
+  // Background with Gray Overlay
   background: 
-    linear-gradient(rgba(26, 39, 46, 0.85), rgba(26, 39, 46, 0.85)), 
+    linear-gradient(rgba(26, 39, 46, 0.0), rgba(26, 39, 46, 0.95)), 
     url("../images/var03.png") no-repeat center center !important;
-  background-size: cover !important; /* Ensures image fills the header area */
+  background-size: cover !important; 
   
-  /* 3. STYLING */
   border-bottom: 3px solid $red !important;
-  border-radius: 8px 8px 0 0; /* Rounds the top corners for a "card" look */
+  border-radius: 8px 8px 0 0; 
   padding: 60px 0 !important;
   text-align: center !important;
   position: static !important;
 
-  h1 a {
-    color: $yellow !important;
-    font-size: 2.8rem !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    pointer-events: none !important; 
-    cursor: default !important;
-    text-decoration: none !important;
-  }
-
-  // Title Style
+  // Title Style (Fixed/Non-clickable)
   h1 a {
     color: $yellow !important;
     font-size: 2.8rem !important;
@@ -81,7 +68,7 @@ header {
     opacity: 1 !important;
   }
 
-  // Navigation Menu inside Header
+  // Navigation Menu
   .nav-menu {
     list-style: none !important;
     display: flex !important;
@@ -95,7 +82,6 @@ header {
       border: none !important;
       padding: 0 !important;
       margin: 0 !important;
-      display: inline-block !important;
     }
 
     a {
@@ -106,14 +92,6 @@ header {
       font-weight: bold;
     }
   }
-  /* --- LAYOUT FIX: PREVENT TEXT WRAPPING --- */
-header, section {
-  display: block !important;
-  float: none !important;    /* This stops the "side-by-side" behavior */
-  clear: both !important;    /* This ensures no elements float next to them */
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
 }
 
 // 4. MAIN CONTENT AREA
@@ -121,7 +99,9 @@ section {
   max-width: 900px !important;
   margin: 0 auto !important;
   padding: 40px 20px !important;
+  display: block !important;
   float: none !important;
+  clear: both !important;
   width: 100% !important;
 
   h1, h2 { color: $red !important; }
@@ -129,7 +109,7 @@ section {
   p, div { color: $yellow !important; }
 }
 
-// 5. GLOBAL LINK STYLE (The sliding underline)
+// 5. GLOBAL LINK STYLE
 a {
   color: $orange !important;
   text-decoration: none !important;
@@ -147,10 +127,10 @@ a {
   }
 }
 
-// 6. PROJECT CARDS (Lists in section)
+// 6. PROJECT CARDS
 section ul li {
   list-style: none;
-  background: lighten($slate, 5%);
+  background: #2a3f4a; 
   margin-bottom: 12px;
   padding: 20px;
   border-left: 5px solid $red;
