@@ -37,7 +37,7 @@ body {
 // 3. HEADER ARCHITECTURE
 header {
   max-width: 900px !important;    
-  margin: 40px auto 30px auto !important; 
+  margin: 10px auto 10px auto !important; 
   width: 100% !important;
   display: block !important;
   float: none !important;
@@ -51,8 +51,8 @@ header {
   background: 
     linear-gradient(
       to bottom, 
-      rgba(26, 39, 46, 0.90) 100%,  /* Brighter/Clearer at the top */
-      rgba(26, 39, 46, 0.90) 10%  /* Darker at the bottom */
+      rgba(26, 39, 46, 0.10) 10%,  /* Brighter/Clearer at the top */
+      rgba(26, 39, 46, 0.95) 100%  /* Darker at the bottom */
     ), 
     url("../images/var03.png") no-repeat center center !important;
   
@@ -181,32 +181,36 @@ footer small { /* Hides the "Hosted on GitHub" text specifically */
   display: none !important;
 }
 
-/* --- 9. MATCHING BOXED FOOTER (SCROLLABLE) --- */
+/* --- 9. COMPACT BOXED FOOTER --- */
 footer {
   display: block !important; 
-  max-width: 900px !important;
+  
+  /* HALF WIDTH: 50% of your 900px layout */
+  max-width: 450px !important; 
   width: 100% !important;
   
-  /* POSITIONING: Ensures it stays at the bottom of the page flow */
+  /* CENTERING & SPACING */
   position: relative !important;
-  margin: 30px auto 40px auto !important; 
-  padding: 5px 10px !important;
+  margin: 40px auto 60px auto !important; 
   
-  background-color: $dark-bg !important; 
+  /* THICKNESS: 30px top/bottom roughly equals 3 lines of text height */
+  padding: 30px 20px !important; 
+  
+  background-color: #1A272E !important; 
   border-top: 3px solid $red !important; 
-  border-radius: 0 0 8px 8px; 
+  border-radius: 8px; /* Fully rounded box look since it's narrower */
   
   text-align: center !important;
   box-sizing: border-box !important;
   clear: both !important;
-  float: none !important; /* Kills any sidebar floating */
 }
 
-/* INJECTING YOUR CUSTOM TEXT */
+/* FOOTER TEXT STYLE */
 footer:after {
-  content: "© 2026 PcapExpress | In the name of Upwards Mobility";
-  color: $orange !important; /* Persian Green */
+  content: "© 2026 PcapExpress \A Digital Forensics Specialist \A Network Security";
+  white-space: pre; /* Allows the '\A' to create actual new lines */
+  color: $green !important;
   font-family: 'Courier New', monospace;
-  font-size: 0.8rem !important;
-  display: block;
+  font-size: 0.85rem !important;
+  line-height: 1.5; /* Adds spacing between the 3 lines */
 }
