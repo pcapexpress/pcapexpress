@@ -65,9 +65,9 @@ header {
 }
 
   h1 a {
-    /* 1. PRIMARY COLOR: Pure Yellow or brightened Orange */
-    color: #FFD700 !important; /* Gold/Yellow for maximum visibility */
+    /* 1. PRIMARY COLOR: Orange */
     
+    color: $orange !important;     
     /* 2. TEXT GLOW: A strong, dark blur makes the light letters stand out */
     text-shadow: 
       0px 0px 10px rgba(0, 0, 0, 0.8), /* Dark outer glow */
