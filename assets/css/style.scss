@@ -35,27 +35,21 @@ body {
 // 3. HEADER ARCHITECTURE
 header {
   max-width: 900px !important;
-  margin: 10px auto 10px auto !important;
+  margin: 10px auto 0 auto !important; /* Zero bottom margin to connect to section */
   width: 100% !important;
   display: block !important;
   box-sizing: border-box !important;
   position: relative !important;
 
   background: 
-    linear-gradient(
-      to bottom, 
-      rgba(26, 39, 46, 0.10) 10%, 
-      rgba(26, 39, 46, 0.95) 100%
-    ), 
+    linear-gradient(to bottom, rgba(26, 39, 46, 0.10) 10%, rgba(26, 39, 46, 0.95) 100%), 
     url("../images/header.png") no-repeat center center !important;
-  
   background-size: cover !important;
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
   padding: 60px 20px !important;
   text-align: center !important;
 
-  // NESTED ELEMENTS
   h1 a {
     color: $orange !important;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.9);
@@ -83,23 +77,7 @@ header {
     gap: 20px !important;
     margin-top: 20px !important;
     padding: 0 !important;
-
-    li {
-      background: transparent !important;
-      border: none !important;
-    }
-
-    a {
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem !important;
-      color: $orange !important;
-      text-transform: uppercase;
-      font-weight: bold;
-
-      &:hover {
-        color: $yellow !important;
-      }
-    }
+    li { background: transparent !important; border: none !important; }
   }
 }
 
@@ -111,15 +89,15 @@ section {
   display: block !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  background-color: transparent !important;
 
   h1, h2 { color: $red !important; }
   h3 { color: $orange !important; }
   
-  // H4 Forensic Green Data
   h4 { 
     color: $green !important; 
     font-family: 'Courier New', monospace !important;
-    border-bottom: 1px solid rgba($green, 0.3);
+    border-bottom: 1px solid rgba(74, 177, 157, 0.3);
     display: inline-block;
   }
 
@@ -134,19 +112,25 @@ section {
   }
 }
 
-// 5. GLOBAL LINK STYLE
+// 5. GLOBAL LINK STYLE (Restored Red Animation)
 a {
   color: $orange !important;
   text-decoration: none !important;
-  transition: 0.3s ease;
+  background-image: linear-gradient($red, $red);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.3s ease, color 0.3s ease;
+  padding-bottom: 2px;
   font-weight: bold;
 
   &:hover {
     color: $yellow !important;
+    background-size: 100% 2px;
   }
 }
 
-// 6. PROJECT CARDS
+// 6. SKILLS / PROJECT CARDS (Restored Red Hover)
 section ul li {
   list-style: none;
   background: $dark-bg !important;
@@ -155,6 +139,16 @@ section ul li {
   border-left: 5px solid $red;
   border-radius: 4px;
   color: $yellow !important;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $red !important; /* Card turns red on hover */
+    color: white !important;           /* Text turns white for contrast */
+    transform: translateX(5px);
+    
+    // Ensure nested text turns white too
+    p, span, div { color: white !important; }
+  }
 }
 
 // 7. CODE BLOCKS
@@ -171,7 +165,7 @@ header > ul:not(.nav-menu), footer small {
   display: none !important;
 }
 
-// 9. SLIM FOOTER
+// 9. SLIM FOOTER (Restored Symmetrical Attachment)
 footer {
   display: flex !important;
   align-items: center;
@@ -179,7 +173,7 @@ footer {
   max-width: 900px !important;
   width: 100% !important;
   height: 40px !important;
-  margin: 10px auto 10px auto !important;
+  margin: 0 auto 10px auto !important; /* Zero top margin to touch the section */
   padding: 0 20px !important;
   background: 
     linear-gradient(rgba(26, 39, 46, 0.80), rgba(26, 39, 46, 0.80)), 
@@ -191,8 +185,4 @@ footer {
 }
 
 footer:after {
-  content: "© 2026 PcapExpress | Patience | Upward Mobility";
-  color: $orange !important;
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem !important;
-}
+  content: "© 2026 PcapExpress | Patience | Upward Mobility
