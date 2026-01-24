@@ -27,14 +27,37 @@ body {
 }
 
 // 3. HEADER ARCHITECTURE
+
+/* --- REFINED BOXED HEADER WITH BACKGROUND --- */
 header {
-  background-color: $dark-bg !important; 
-  border-bottom: 3px solid $red !important;
+  /* 1. MATCH BODY LENGTH */
+  max-width: 900px !important;    /* Matches your section width */
+  margin: 0 auto 30px auto !important; /* Centers the header and adds bottom gap */
   width: 100% !important;
-  position: static !important;
-  margin-bottom: 30px !important;
-  text-align: center !important;
+  
+  /* 2. BACKGROUND IMAGE WITH GRAY OPACITY OVERLAY */
+  /* The rgba(40, 44, 52, 0.8) is a dark gray with 80% opacity */
+  background: 
+    linear-gradient(rgba(26, 39, 46, 0.85), rgba(26, 39, 46, 0.85)), 
+    url("../images/var03.png") no-repeat center center !important;
+  background-size: cover !important; /* Ensures image fills the header area */
+  
+  /* 3. STYLING */
+  border-bottom: 3px solid $red !important;
+  border-radius: 8px 8px 0 0; /* Rounds the top corners for a "card" look */
   padding: 60px 0 !important;
+  text-align: center !important;
+  position: static !important;
+
+  h1 a {
+    color: $yellow !important;
+    font-size: 2.8rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    pointer-events: none !important; 
+    cursor: default !important;
+    text-decoration: none !important;
+  }
 
   // Title Style
   h1 a {
