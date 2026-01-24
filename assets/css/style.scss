@@ -14,7 +14,7 @@ $dark-bg: #1A272E;
 body {
   background-color: $slate !important;
   background-image: none !important;
-  color: $yellow !important;
+  color: $orange !important;
   margin: 0 !important;
   padding: 0 !important;
   display: flex !important;
@@ -48,7 +48,7 @@ header {
   left: auto !important;
 
   background: 
-    linear-gradient(rgba(26, 39, 46, 0.85), rgba(26, 39, 46, 0.85)), 
+    linear-gradient(rgba(26, 39, 46, 0.85), rgba(26, 39, 46, 0.10)), 
     url("../images/var03.png") no-repeat center center !important;
   background-size: cover !important; 
   
@@ -95,7 +95,7 @@ header {
     a {
       font-family: 'Courier New', monospace;
       font-size: 0.9rem !important;
-      color: $green !important;
+      color: $orange !important;
       text-transform: uppercase;
       font-weight: bold;
     }
@@ -122,7 +122,7 @@ section {
 a {
   color: $orange !important;
   text-decoration: none !important;
-  background-image: linear-gradient($red, $red);
+  background-image: linear-gradient($red, $orange);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
@@ -160,14 +160,6 @@ pre, code {
   font-family: 'Courier New', monospace !important;
 }
 
-/* --- 8. CLEANUP (Hiding theme defaults only) --- */
-header .view, 
-header p.view, 
-header ul.downloads,
-header > ul:not(.nav-menu) {
-  display: none !important;
-}
-
 /* --- 8. CLEANUP (Hiding theme defaults) --- */
 header .view, 
 header p.view, 
@@ -185,11 +177,11 @@ footer {
   
   /* POSITIONING: Ensures it stays at the bottom of the page flow */
   position: relative !important;
-  margin: 30px auto 40px auto !important; 
+  margin: 10px auto 40px auto !important; 
   padding: 20px !important;
   
-  background-color: #1A272E !important; 
-  border-top: 3px solid #EF3D59 !important; 
+  background-color: $dark-bg !important; 
+  border-top: 3px solid $red !important; 
   border-radius: 0 0 8px 8px; 
   
   text-align: center !important;
@@ -201,7 +193,7 @@ footer {
 /* INJECTING YOUR CUSTOM TEXT */
 footer:after {
   content: "© 2026 PcapExpress | In the name of Upwards Mobility";
-  color: #4AB19D !important; /* Persian Green */
+  color: $orange !important; /* Persian Green */
   font-family: 'Courier New', monospace;
   font-size: 0.8rem !important;
   display: block;
