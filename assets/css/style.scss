@@ -48,7 +48,7 @@ header {
   background-size: cover !important;
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
-  padding: 20px 20px !important; // Slim Padding
+  padding: 60px 20px !important; // Slim Padding
   text-align: center !important;
 
   // LINE 1: Green Scan
@@ -121,23 +121,7 @@ header {
     gap: 15px !important;
     margin-top: 15px !important;
     padding: 0 !important;
-
-    li a {
-      background: rgba($dark-bg, 0.8) !important;
-      border: 1px solid $green !important;
-      color: $green !important;
-      padding: 5px 15px !important;
-      border-radius: 50px !important;
-      font-size: 0.8rem !important;
-      text-transform: uppercase;
-      text-decoration: none !important;
-      pointer-events: auto !important;
-      &:hover {
-        background: $green !important;
-        color: $dark-bg !important;
-        box-shadow: 0 0 10px $green;
-      }
-    }
+    
   }
 } 
 
@@ -286,7 +270,7 @@ footer {
   height: 40px !important;
   
   /* MARGIN: 0 top (attach to section), 40px bottom (float) */
-  margin: 0 auto 40px auto !important; 
+  margin: 5 auto 10px auto !important; 
   padding: 0 20px !important; 
   position: relative !important;
 
