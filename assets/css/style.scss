@@ -34,55 +34,60 @@ body {
 }
 
 /* --- 3. HEADER: DUAL SCAN FEED --- */
+/* --- 12. GLITCH SCAN EFFECT --- */
 header {
-  max-width: 900px !important;
-  margin: 10px auto 0 auto !important; 
-  width: 100% !important;
-  display: block !important;
-  position: relative !important;
-  overflow: hidden;
+  position: relative;
+  overflow: hidden; // Keeps the glitch contained
 
-  background: 
-    /* LAYER 1: FAST SCAN LINE (Smaller size = moves faster) */
-    linear-gradient(to bottom, transparent 0%, rgba(74, 177, 157, 0.4) 50%, transparent 100%),
-    /* LAYER 2: SLOW SCAN LINE (Larger size = moves slower) */
-    linear-gradient(to bottom, transparent 0%, rgba(74, 177, 157, 0.2) 50%, transparent 100%),
-    /* LAYER 3: CRT MESH */
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px),
-    /* LAYER 4: SIGNAL NOISE */
-    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBgMAAAC9uU0ZAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUGNNjYBgF6AIAAnAAAW7fN7EAAAAASUVORK5CYII="),
-    /* LAYER 5: IMAGE */
-    linear-gradient(to bottom, rgba(26, 39, 46, 0.4) 10%, rgba(26, 39, 46, 0.95) 100%), 
-    url("../images/header.png") no-repeat center center !important;
-
-  /* SIZING: Layer1(200px), Layer2(800px), Mesh(2px), Noise(auto), Image(cover) */
-  background-size: 100% 200px, 100% 800px, 100% 2px, auto, cover, cover !important;
-  background-repeat: repeat, repeat, repeat, repeat, no-repeat !important;
-  
-  /* ANIMATIONS */
-  animation: 
-    flowLines 12s linear infinite, 
-    imageDistort 4s ease-in-out infinite !important;
-  
-  border-bottom: 3px solid $red !important;
-  border-radius: 8px 8px 0 0; 
-  padding: 60px 20px !important;
-  text-align: center !important;
-
-   /* --- UPDATED FLOW ANIMATION --- */
-@keyframes flowLines {
-  from { 
-    /* Both start at 0 */
-    background-position: 0 0, 0 0, 0 0, 0 0, center; 
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: rgba($green, 0.5);
+    box-shadow: 0 0 15px $green;
+    animation: scanLine 4s linear infinite;
+    pointer-events: none;
+    z-index: 2;
   }
-  to { 
-    /* Both move to 800px. 
-       Layer 1 will loop 4 times (800/200).
-       Layer 2 will loop 1 time (800/800). */
-    background-position: 0 800px, 0 800px, 0 0, 0 0, center; 
+
+  /* The Glitch "Ghost" Effect */
+  &:hover h1 a {
+    animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
   }
 }
 
+/* 1. The Scanning Line Animation */
+@keyframes scanLine {
+  0% { top: 0; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* 2. The Rapid Text Glitch (Activates on Hover) */
+@keyframes glitchText {
+  0% {
+    transform: translate(0);
+    text-shadow: -2px -2px $red, 2px 2px $green;
+  }
+  25% {
+    transform: translate(-2px, 2px);
+    text-shadow: 2px 2px $red, -2px -2px $green;
+  }
+  50% {
+    transform: translate(2px, -2px);
+    text-shadow: -2px 2px $red, 2px -2px $green;
+  }
+  75% {
+    transform: translate(-2px, -2px);
+    text-shadow: 2px -2px $red, -2px 2px $green;
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: -2px -2px $red, 2px 2px $green;
+  }
+}
   h1 a {
     color: $orange !important;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.9);
@@ -191,13 +196,17 @@ section ul li {
 
 // 7. CODE BLOCKS
 pre, code {
-  background: $dark-bg !important;
+  background: #1a1a1a url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBgMAAAC9uU0ZAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUGNNjYBgF6AIAAnAAAW7fN7EAAAAASUVORK5CYII=") !important;
   color: $green !important;
-  font-family: 'Courier New', monospace !important;
+  border: 1px solid rgba($green, 0.3);
+}
+ // background: $dark-bg !important;
+  //color: $green !important;
+ // font-family: 'Courier New', monospace !important;
   
   // REMOVE UNDERLINES
-  text-decoration: none !important;
-  background-image: none !important; 
+ // text-decoration: none !important;
+ // background-image: none !important; 
   
   // TRANSITION FOR SMOOTHNESS
   transition: all 0.3s ease;
