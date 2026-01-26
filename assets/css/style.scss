@@ -262,3 +262,26 @@ footer:after {
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
 }
+
+/* --- ANIMATION ENGINES --- */
+
+/* This makes the Layer 3 lines move downward */
+@keyframes flowLines {
+  from { 
+    background-position: 0 0, 0 0, 0 0, center, center; 
+  }
+  to { 
+    background-position: 0 0, 0 0, 0 1000px, center, center; 
+  }
+}
+
+/* This creates the subtle text shiver on hover */
+@keyframes subtleGlitch {
+  0% { transform: translate(0); opacity: 1; }
+  5% { transform: translate(-0.8px, 0.5px); text-shadow: 1px 0 $red, -1px 0 $green; }
+  8% { transform: translate(0); text-shadow: none; }
+  45% { opacity: 0.98; }
+  47% { opacity: 1; transform: translate(0.5px, -0.5px); }
+  50% { transform: translate(0); }
+  100% { transform: translate(0); }
+}
