@@ -33,6 +33,21 @@ body {
 }
 
 // 3. HEADER ARCHITECTURE
+header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: rgba($green, 0.3);
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
 header {
   max-width: 900px !important;
   margin: 10px auto 0 auto !important; /* Zero bottom margin to connect to section */
@@ -93,13 +108,7 @@ section {
 
   h1, h2 { color: $red !important; }
   h3 { color: $orange !important; }
-  
-  h4 { 
-    color: $green !important; 
-    font-family: 'Courier New', monospace !important;
-    border-bottom: 1px solid rgba(74, 177, 157, 0.3);
-    display: inline-block;
-  }
+  h4 { color: $green !important;}
 
   p, div, li { color: $yellow !important; }
 
@@ -130,7 +139,7 @@ a {
   }
 }
 
-// 6. SKILLS / PROJECT CARDS (Restored Red Hover)
+// 6. SKILLS / PROJECT CARDS
 section ul li {
   list-style: none;
   background: $dark-bg !important;
@@ -149,14 +158,6 @@ section ul li {
     // Ensure nested text turns white too
     p, span, div { color: white !important; }
   }
-}
-
-// 7. CODE BLOCKS
-pre, code {
-  background: #1a1a1a !important;
-  color: $green !important;
-  border: 1px solid rgba($green, 0.2);
-  font-family: 'Courier New', monospace !important;
 }
 
 // 8. CLEANUP
