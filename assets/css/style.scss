@@ -21,31 +21,44 @@ body {
   align-items: center !important;
   min-height: 100vh;
   overflow-x: hidden;
+  padding-bottom: 60px !important; // Creates a buffer at the very end of the page
 }
 
 .wrapper {
   max-width: 900px !important;
   width: 100% !important;
-  margin: 0 auto !important;
+  margin: 30px auto !important; // First value (30px) is the gap from the top
 }
 
 /* --- 3. HEADER ARCHITECTURE --- */
 header {
   max-width: 900px !important;
-  margin: 10px auto 0 auto !important; /* Zero bottom margin to connect to section */
+  margin: 10px auto 0 auto !important;
   width: 100% !important;
   display: block !important;
   box-sizing: border-box !important;
   position: relative !important;
   overflow: hidden;
+
   background: 
-    linear-gradient(to bottom, rgba(26, 39, 46, 0.10) 10%, rgba(26, 39, 46, 0.95) 100%), 
+    /* LAYER 1: The Dark Overlay */
+    linear-gradient(to bottom, rgba(26, 39, 46, 0.2) 10%, rgba(26, 39, 46, 0.95) 100%),
+    
+    /* LAYER 2: The TV Static ( CRT Grain ) */
+    repeating-conic-gradient(#1a1a1a 0% 25%, #222 0% 50%),
+    
+    /* LAYER 3: Your Forensic Image */
     url("../images/header.png") no-repeat center center !important;
-  background-size: cover !important;
+
+  /* CORRECT: Assigns sizes to each layer in order */
+  background-size: auto, 4px 4px, cover !important;
+
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
-  padding: 60px 20px !important;
+  padding: 80px 20px !important; // Increase 60px to 80px for a taller header
+  margin-bottom: 0 !important; // Ensures it stays connected to the content section
   text-align: center !important;
+}
 
   // LINE 1: High-Intensity Green Scan
   &::after {
@@ -145,6 +158,8 @@ section {
   width: 100% !important;
   box-sizing: border-box !important;
   background-color: transparent !important;
+  margin-top: 0 !important; // Connects perfectly to the bottom of the header
+  border-radius: 0 0 8px 8px; // Rounds the bottom corners of the main body
 
   h1, h2 { color: $red !important; }
   h3 { color: $orange !important; }
