@@ -32,8 +32,10 @@ body {
 /* --- 3. HEADER ARCHITECTURE --- */
 header {
   max-width: 900px !important;
-  margin: 10px auto 0 auto !important;
+  margin: 10px auto 0 auto !important; /* Zero bottom margin to connect to section */
   width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
   position: relative !important;
   overflow: hidden;
   background: 
@@ -132,6 +134,7 @@ header {
       }
     }
   }
+}
 
 // 4. MAIN CONTENT AREA
 section {
