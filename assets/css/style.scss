@@ -71,7 +71,7 @@ header {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 1px; // Thinner for a "laser" look
-    background: rgba($red, 0.6);
+    background: rgba($yellow, 0.6);
     box-shadow: 0 0 10px $red;
     animation: scanLine 1.5s linear infinite; // Much faster
     animation-delay: 0.5s; // Offsets the start so they don't move together
@@ -81,7 +81,7 @@ header {
 
   /* TRIGGER: When any part of the header is hovered, the title glitches */
   &:hover h1 a {
-    animation: glitchText 0.3s cubic-bezier(0.9, 0, 0.1, 1) both infinite !important;
+    animation: glitchText 0.3s cubic-bezier(0, 1, 0, 1) both infinite !important;
   }
 
   h1 {
@@ -206,17 +206,30 @@ section ul li {
 
 // 7. CODE BLOCKS
 pre, code {
-  background-color: #1a1a1a !important; 
-  /* We use the image on a separate line to ensure it layers on top */
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBgMAAAC9uU0ZAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUGNNjYBgF6AIAAnAAAW7fN7EAAAAASUVORK5CYII=") !important;
-  background-repeat: repeat !important;
-  background-size: 100px 100px !important; // Sizing it up makes the grain chunkier and more visible
+  background-color: #0a0a0a !important; 
+  
+  /* TV STATIC GENERATOR */
+  background-image: 
+    repeating-conic-gradient(#1a1a1a 0% 25%, #222 0% 50%) !important;
+  background-size: 4px 4px !important; // Controls the "grain" size
   
   color: $green !important;
   border: 1px solid rgba($green, 0.3);
   padding: 15px !important;
   display: block;
   font-family: 'Courier New', monospace !important;
+  position: relative;
+  overflow: hidden;
+
+  /* This adds the flicker effect to the static */
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255,255,255, 0.03);
+    pointer-events: none;
+    animation: staticFlicker 0.2s infinite;
+  }
 }
 
 // 8. CLEANUP
