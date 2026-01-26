@@ -104,12 +104,15 @@ section {
   p, div, li { color: $yellow !important; }
 
   blockquote {
-    border-left: 8px solid $red !important;
+    border-left: 4px solid $red !important;
     background: $dark-bg !important;
     padding: 15px 20px !important;
     margin: 20px 0 !important;
-    p { color: $yellow !important; font-style: italic; }
-  }
+    p { 
+      color: $yellow !important; 
+      font-style: italic; 
+      margin: 0 !important; // Keeps the text perfectly centered in the box
+    }
 }
 
 // 5. GLOBAL LINK STYLE (Restored Red Animation)
@@ -157,6 +160,20 @@ pre, code {
   color: $green !important;
   border: 1px solid rgba($green, 0.2);
   font-family: 'Courier New', monospace !important;
+  
+  // REMOVE UNDERLINES
+  text-decoration: none !important;
+  background-image: none !important; 
+  
+  // TRANSITION FOR SMOOTHNESS
+  transition: all 0.3s ease;
+
+  &:hover {
+    // TRIGGER THE GLITCH
+    animation: subtleGlitch 2s ease-in-out infinite !important;
+    border-color: rgba($green, 0.8); // Make the border glow slightly
+    box-shadow: 0 0 10px rgba($green, 0.2);
+  }
 }
 
 // 8. CLEANUP
