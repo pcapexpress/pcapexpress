@@ -69,6 +69,19 @@ header {
   padding: 60px 20px !important;
   text-align: center !important;
 
+   /* --- UPDATED FLOW ANIMATION --- */
+@keyframes flowLines {
+  from { 
+    /* Both start at 0 */
+    background-position: 0 0, 0 0, 0 0, 0 0, center; 
+  }
+  to { 
+    /* Both move to 800px. 
+       Layer 1 will loop 4 times (800/200).
+       Layer 2 will loop 1 time (800/800). */
+    background-position: 0 800px, 0 800px, 0 0, 0 0, center; 
+  }
+}
 
   h1 a {
     color: $orange !important;
@@ -233,18 +246,4 @@ footer:after {
   color: $orange !important;
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
-}
-
-  /* --- UPDATED FLOW ANIMATION --- */
-@keyframes flowLines {
-  from { 
-    /* Both start at 0 */
-    background-position: 0 0, 0 0, 0 0, 0 0, center; 
-  }
-  to { 
-    /* Both move to 800px. 
-       Layer 1 will loop 4 times (800/200).
-       Layer 2 will loop 1 time (800/800). */
-    background-position: 0 800px, 0 800px, 0 0, 0 0, center; 
-  }
 }
