@@ -33,7 +33,7 @@ body {
   display: block !important;
 }
 
-/* --- 3. HEADER: DISTORTED SCAN FEED --- */
+/* --- 3. HEADER: DUAL SCAN FEED --- */
 header {
   max-width: 900px !important;
   margin: 10px auto 0 auto !important; 
@@ -42,36 +42,33 @@ header {
   position: relative !important;
   overflow: hidden;
 
-  /* Layered Background: Static + Moving Lines + Noise + Dark Fade + Image */
   background: 
-    /* Layer 1: CRT Mesh */
+    /* LAYER 1: FAST SCAN LINE (Smaller size = moves faster) */
+    linear-gradient(to bottom, transparent 0%, rgba(74, 177, 157, 0.4) 50%, transparent 100%),
+    /* LAYER 2: SLOW SCAN LINE (Larger size = moves slower) */
+    linear-gradient(to bottom, transparent 0%, rgba(74, 177, 157, 0.2) 50%, transparent 100%),
+    /* LAYER 3: CRT MESH */
     repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px),
-    /* Layer 2: Multiple Scan Lines (The "Data Streams") */
-    repeating-linear-gradient(to bottom, 
-      transparent 0%, 
-      rgba($green, 0.2) 10%, 
-      transparent 20%, 
-      rgba($green, 0.1) 50%, 
-      transparent 70%
-    ),
-    /* Layer 3: Signal Noise Grain */
+    /* LAYER 4: SIGNAL NOISE */
     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBgMAAAC9uU0ZAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUGNNjYBgF6AIAAnAAAW7fN7EAAAAASUVORK5CYII="),
-    /* Layer 4: The Dark Fade and Base Image */
-    linear-gradient(to bottom, rgba(26, 39, 46, 0.3) 10%, rgba(26, 39, 46, 0.9) 100%), 
+    /* LAYER 5: IMAGE */
+    linear-gradient(to bottom, rgba(26, 39, 46, 0.4) 10%, rgba(26, 39, 46, 0.95) 100%), 
     url("../images/header.png") no-repeat center center !important;
 
-  /* SIZING */
-  background-size: 100% 2px, 100% 600px, auto, cover, cover !important;
+  /* SIZING: Layer1(200px), Layer2(800px), Mesh(2px), Noise(auto), Image(cover) */
+  background-size: 100% 200px, 100% 800px, 100% 2px, auto, cover, cover !important;
+  background-repeat: repeat, repeat, repeat, repeat, no-repeat !important;
   
-  /* ANIMATIONS: Combined Line Flow + Image Distortion */
+  /* ANIMATIONS */
   animation: 
-    flowLines 8s linear infinite, 
+    flowLines 12s linear infinite, 
     imageDistort 4s ease-in-out infinite !important;
   
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
   padding: 60px 20px !important;
   text-align: center !important;
+
 
   h1 a {
     color: $orange !important;
@@ -128,8 +125,8 @@ section {
   p, div, li { color: $yellow !important; }
 
   blockquote {
-    border-left: 4px solid $red !important;
-    background: $dark-bg !important;
+    border-left: 3px solid $red !important;
+    background: $medium-bg !important;
     padding: 15px 20px !important;
     margin: 20px 0 !important;
     p { 
@@ -238,20 +235,16 @@ footer:after {
   font-size: 0.85rem !important;
 }
 
-/* --- 10. UPDATED ANIMATIONS --- */
-
-/* Moves the scan lines downward */
+  /* --- UPDATED FLOW ANIMATION --- */
 @keyframes flowLines {
-  from { background-position: center, 0 0, center, center, center; }
-  to { background-position: center, 0 600px, center, center, center; }
-}
-
-/* Subtle "Signal Interference" Distortion */
-@keyframes imageDistort {
-  0%, 100% { filter: contrast(1) brightness(1); transform: scale(1); }
-  5% { filter: contrast(1.1) brightness(1.2) hue-rotate(2deg); transform: skewX(0.5deg); }
-  7% { filter: contrast(1) brightness(1); transform: skewX(0deg); }
-  50% { filter: contrast(1.05); }
-  52% { filter: contrast(1.2) brightness(1.1); transform: scale(1.005); }
-  54% { filter: contrast(1); transform: scale(1); }
+  from { 
+    /* Both start at 0 */
+    background-position: 0 0, 0 0, 0 0, 0 0, center; 
+  }
+  to { 
+    /* Both move to 800px. 
+       Layer 1 will loop 4 times (800/200).
+       Layer 2 will loop 1 time (800/800). */
+    background-position: 0 800px, 0 800px, 0 0, 0 0, center; 
+  }
 }
