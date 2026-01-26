@@ -52,51 +52,58 @@ header {
   padding: 60px 20px !important;
   text-align: center !important;
 
-// LINE 1: Forensic "Data Sweep" Green Line
+// LINE 1: Green Scan
   &::after {
     content: "";
     position: absolute;
     top: 0; left: 0;
-    width: 100%; 
-    height: 15px; // Thicker height to accommodate the "trail"
+    width: 100%; height: 12px;
+    // BASE STATE: Dull & Transparent
+    background: linear-gradient(to top, rgba($green, 0.1) 0%, transparent 100%);
+    box-shadow: none;
+    opacity: 0.3;
     
-    /* A gradient that fades upwards to look like an afterglow trail */
-    background: linear-gradient(to top, 
-      rgba($green, 0.8) 0%, 
-      rgba($green, 0.3) 50%, 
-      transparent 100%
-    );
-    
-    box-shadow: 0 2px 10px rgba($green, 0.4);
-    
-    /* Combining the downward movement with a 'stuttering' flicker */
-    animation: 
-      scanLine 4s linear infinite, 
-      dataStutter 3s steps(4) infinite;
-      
+    // Constant slow movement
+    animation: scanLine 4s linear infinite;
+    transition: all 0.4s ease; // Smooth transition when mouse enters/leaves
     pointer-events: none;
     z-index: 2;
   }
 
-// LINE 2: High-Intensity Red Pulse
+  // LINE 2: Red Scan
   &::before {
     content: "";
     position: absolute;
     top: 0; left: 0;
-    width: 100%; height: 2px; // Slightly thicker for visibility
-    background: rgba(255, 61, 89, 1); // Using full-vibrancy Red
+    width: 100%; height: 1px;
+    // BASE STATE: Barely visible
+    background: rgba($red, 0.1);
+    box-shadow: none;
     
-    /* Layered Glow: Core (white-ish) + Inner (Red) + Outer (Bloom) */
-    box-shadow: 
-      0 0 5px rgba(255, 255, 255, 0.8), 
-      0 0 15px $red, 
-      0 0 30px rgba($red, 0.6);
-      
-    /* We use a dedicated fastPulse for more drama */
-    animation: scanLine 1.5s linear infinite, fastPulse 0.8s ease-in-out infinite;
+    // Constant movement
+    animation: scanLine 1.5s linear infinite;
     animation-delay: 0.5s;
+    transition: all 0.4s ease;
     pointer-events: none;
     z-index: 2;
+  }
+
+  // --- HOVER STATE: POWER UP ---
+  &:hover {
+    &::after {
+      opacity: 1;
+      background: linear-gradient(to top, rgba($green, 0.3) 0%, rgba($green, 0.1) 50%, transparent 100%);
+      box-shadow: 0 2px 8px rgba($green, 0.2);
+      // Trigger the interesting data pulse only on hover
+      animation: scanLine 4s linear infinite, dataStutter 3s steps(4) infinite;
+    }
+
+    &::before {
+      background: rgba($red, 0.4);
+      box-shadow: 0 0 3px rgba(255, 255, 255, 0.4), 0 0 8px rgba($red, 0.5);
+      // Trigger the vivid red pulse only on hover
+      animation: scanLine 1.5s linear infinite, fastPulse 0.8s ease-in-out infinite;
+    }
   }
 
   /* TRIGGER: When any part of the header is hovered, the title glitches */
@@ -119,6 +126,7 @@ header {
       cursor: default !important;
     }
   }
+}
 
   .header-bio, p {
     color: $green !important;
