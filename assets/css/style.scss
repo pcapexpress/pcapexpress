@@ -10,9 +10,10 @@ $green: #4AB19D;
 $orange: #E17A47;
 $dark-bg: #1A272E;
 
-// 2. GLOBAL RESET
+// 2. GLOBAL RESET & CENTERING
 body {
   background-color: $slate !important;
+  background-image: none !important;
   color: $orange !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -31,32 +32,19 @@ body {
   display: block !important;
 }
 
-/* --- 3. HEADER ARCHITECTURE & MULTI-GLITCH --- */
+// 3. HEADER ARCHITECTURE
 header {
   max-width: 900px !important;
-  margin: 10px auto 0 auto !important; 
+  margin: 10px auto 0 auto !important; /* Zero bottom margin to connect to section */
   width: 100% !important;
   display: block !important;
+  box-sizing: border-box !important;
   position: relative !important;
-  overflow: hidden;
 
   background: 
-    /* Layer 1: Static CRT Mesh */
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px),
-    /* Layer 2: Moving Multi-Scanlines (Green & Faint Red) */
-    repeating-linear-gradient(to bottom, 
-      transparent 0%, 
-      rgba($green, 0.1) 50%, 
-      transparent 100%
-    ),
-    /* Layer 3: Dark Overlay + Base Image */
-    linear-gradient(to bottom, rgba(26, 39, 46, 0.4) 10%, rgba(26, 39, 46, 0.95) 100%), 
+    linear-gradient(to bottom, rgba(26, 39, 46, 0.10) 10%, rgba(26, 39, 46, 0.95) 100%), 
     url("../images/header.png") no-repeat center center !important;
-
-  /* SIZING: Line height is set large (400px) so they feel randomized as they scroll */
-  background-size: 100% 2px, 100% 400px, cover, cover !important;
-  animation: flowLines 12s linear infinite; /* This moves the scan lines */
-  
+  background-size: cover !important;
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
   padding: 60px 20px !important;
@@ -64,37 +52,33 @@ header {
 
   h1 a {
     color: $orange !important;
-    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.9);
     font-size: 2.8rem !important;
     text-transform: none !important;
     letter-spacing: 2px;
+    pointer-events: none !important;
+    text-decoration: none !important;
+    display: block !important;
     font-weight: 900 !important;
-    position: relative;
-    z-index: 3;
-    /* Subtle Glitch on Hover */
-    &:hover {
-      animation: subtleGlitch 2s ease-in-out infinite;
-    }
   }
-}
 
-/* --- ANIMATIONS --- */
+  .header-bio, p {
+    color: $green !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    margin: 15px 0 !important;
+    display: block !important;
+  }
 
-/* Moves the multiple flowing lines background */
-@keyframes flowLines {
-  from { background-position: 0 0, 0 0, center, center; }
-  to { background-position: 0 0, 0 1000px, center, center; }
-}
-
-/* A Much More Subtle Glitch: Micro-shifts and faint color pulses */
-@keyframes subtleGlitch {
-  0% { transform: translate(0); opacity: 1; }
-  7% { transform: translate(-0.5px, 0.5px); text-shadow: 1px 0 $red, -1px 0 $green; }
-  10% { transform: translate(0); text-shadow: none; }
-  25% { opacity: 0.95; }
-  27% { opacity: 1; transform: translate(0.5px, -0.5px); }
-  30% { transform: translate(0); }
-  100% { transform: translate(0); }
+  .nav-menu {
+    list-style: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-top: 20px !important;
+    padding: 0 !important;
+    li { background: transparent !important; border: none !important; }
+  }
 }
 
 // 4. MAIN CONTENT AREA
@@ -109,7 +93,13 @@ section {
 
   h1, h2 { color: $red !important; }
   h3 { color: $orange !important; }
-  h4 { color: $green !important; font-family: 'Courier New', monospace !important; }
+
+  h4 { 
+    color: $green !important; 
+    font-family: 'Courier New', monospace !important;
+    border-bottom: 1px solid rgba(74, 177, 157, 0.3);
+    display: inline-block;
+  }
 
   p, div, li { color: $yellow !important; }
 
@@ -122,7 +112,7 @@ section {
   }
 }
 
-// 5. GLOBAL LINK STYLE
+// 5. GLOBAL LINK STYLE (Restored Red Animation)
 a {
   color: $orange !important;
   text-decoration: none !important;
@@ -140,7 +130,7 @@ a {
   }
 }
 
-// 6. SKILLS / PROJECT CARDS
+// 6. SKILLS / PROJECT CARDS (Restored Red Hover)
 section ul li {
   list-style: none;
   background: $dark-bg !important;
@@ -152,56 +142,30 @@ section ul li {
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: $red !important;
-    color: white !important;
+    background-color: $red !important; /* Card turns red on hover */
+    color: white !important;           /* Text turns white for contrast */
     transform: translateX(5px);
+
+    // Ensure nested text turns white too
     p, span, div { color: white !important; }
   }
 }
 
-// 7. PILL BUTTONS
-.button-pill {
-  display: inline-block;
-  padding: 8px 20px !important;
-  margin: 10px 5px !important;
-  background-color: $dark-bg !important;
-  color: $orange !important;
-  border: 2px solid $red !important;
-  border-radius: 50px !important;
+// 7. CODE BLOCKS
+pre, code {
+  background: #1a1a1a !important;
+  color: $green !important;
+  border: 1px solid rgba($green, 0.2);
   font-family: 'Courier New', monospace !important;
-  font-weight: bold !important;
-  font-size: 0.9rem !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 0 5px rgba(239, 61, 89, 0.2);
-  background-image: none !important;
-
-  &:hover {
-    background-color: $red !important;
-    color: white !important;
-    box-shadow: 0 0 15px rgba(239, 61, 89, 0.5);
-    transform: translateY(-2px);
-  }
 }
 
-// 8. BADGE
-.badge {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  background: rgba(74, 177, 157, 0.1);
-  color: $green;
-  border: 1px solid $green;
-}
-
-// 9. CLEANUP
+// 8. CLEANUP
 header .view, header p.view, header ul.downloads, 
 header > ul:not(.nav-menu), footer small {
   display: none !important;
 }
 
-// 10. SLIM FOOTER
+// 9. SLIM FOOTER (Restored Symmetrical Attachment)
 footer {
   display: flex !important;
   align-items: center;
@@ -209,8 +173,14 @@ footer {
   max-width: 900px !important;
   width: 100% !important;
   height: 40px !important;
-  margin: 0 auto 10px auto !important;
-  position: relative !important;
+  margin: 0 auto 10px auto !important; /* Zero top margin to touch the section */
+  padding: 0 20px !important;
+
+  /* POSITION OVERRIDE */
+  position: relative !important; /* Changes from 'fixed' to 'relative' */
+  bottom: auto !important;       /* Disables any 'pinned' bottom settings */
+  left: auto !important;
+  
   background: 
     linear-gradient(rgba(26, 39, 46, 0.80), rgba(26, 39, 46, 0.80)), 
     url("../images/footer.png") no-repeat center center !important;
@@ -225,4 +195,3 @@ footer:after {
   color: $orange !important;
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
-}
