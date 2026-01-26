@@ -33,7 +33,6 @@ body {
   display: block !important;
 }
 
-/* --- 3. HEADER ARCHITECTURE --- */
 header {
   max-width: 900px !important;
   margin: 10px auto 0 auto !important;
@@ -52,20 +51,17 @@ header {
   padding: 60px 20px !important;
   text-align: center !important;
 
-// LINE 1: Green Scan
+  // LINE 1: Green Scan
   &::after {
     content: "";
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 12px;
-    // BASE STATE: Dull & Transparent
     background: linear-gradient(to top, rgba($green, 0.1) 0%, transparent 100%);
     box-shadow: none;
     opacity: 0.3;
-    
-    // Constant slow movement
     animation: scanLine 4s linear infinite;
-    transition: all 0.4s ease; // Smooth transition when mouse enters/leaves
+    transition: all 0.4s ease;
     pointer-events: none;
     z-index: 2;
   }
@@ -76,11 +72,8 @@ header {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 1px;
-    // BASE STATE: Barely visible
     background: rgba($red, 0.1);
     box-shadow: none;
-    
-    // Constant movement
     animation: scanLine 1.5s linear infinite;
     animation-delay: 0.5s;
     transition: all 0.4s ease;
@@ -94,26 +87,29 @@ header {
       opacity: 1;
       background: linear-gradient(to top, rgba($green, 0.3) 0%, rgba($green, 0.1) 50%, transparent 100%);
       box-shadow: 0 2px 8px rgba($green, 0.2);
-      // Trigger the interesting data pulse only on hover
       animation: scanLine 4s linear infinite, dataStutter 3s steps(4) infinite;
     }
 
     &::before {
       background: rgba($red, 0.4);
       box-shadow: 0 0 3px rgba(255, 255, 255, 0.4), 0 0 8px rgba($red, 0.5);
-      // Trigger the vivid red pulse only on hover
       animation: scanLine 1.5s linear infinite, fastPulse 0.8s ease-in-out infinite;
     }
-  }
 
-  /* TRIGGER: When any part of the header is hovered, the title glitches */
-  &:hover h1 a {
-    animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important;
+    // Header Title Glitch Trigger
+    h1 a {
+      animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important;
+    }
+
+    // Green Text Glow Trigger
+    .header-bio, p {
+      text-shadow: 0 0 8px rgba($green, 0.6), 0 0 12px rgba($green, 0.3);
+      filter: brightness(1.2);
+    }
   }
 
   h1 {
     margin: 0 !important;
-    
     a {
       color: $orange !important;
       text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.9);
@@ -126,7 +122,35 @@ header {
       cursor: default !important;
     }
   }
-}
+
+  .header-bio, p {
+    color: $green !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    margin: 15px 0 !important;
+    display: block !important;
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 0 5px rgba($green, 0.2);
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu {
+    position: relative;
+    z-index: 5;
+    list-style: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-top: 20px !important;
+    padding: 0 !important;
+    li { 
+      background: transparent !important; 
+      border: none !important;
+      a { pointer-events: auto !important; } 
+    }
+  }
+} // <--- This now correctly closes EVERY item in Section 3
 
   .header-bio, p {
     color: $green !important;
