@@ -32,67 +32,70 @@ body {
   display: block !important;
 }
 
-/* --- 3. HEADER ARCHITECTURE & EFFECTS --- */
 header {
   max-width: 900px !important;
   margin: 10px auto 0 auto !important; 
   width: 100% !important;
   display: block !important;
-  box-sizing: border-box !important;
   position: relative !important;
-  overflow: hidden; /* Required for the scanline/glitch */
+  overflow: hidden;
 
-  /* TRIPLE BACKGROUND: Static Lines + Dark Fade + Image */
   background: 
-    repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.15) 0px,
-      rgba(0, 0, 0, 0.15) 1px,
-      transparent 1px,
-      transparent 2px
+    /* Layer 1: Static CRT Mesh */
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px),
+    /* Layer 2: Moving Multi-Scanlines (Green & Faint Red) */
+    repeating-linear-gradient(to bottom, 
+      transparent 0%, 
+      rgba($green, 0.1) 50%, 
+      transparent 100%
     ),
-    linear-gradient(to bottom, rgba(26, 39, 46, 0.10) 10%, rgba(26, 39, 46, 0.95) 100%), 
+    /* Layer 3: Dark Overlay + Base Image */
+    linear-gradient(to bottom, rgba(26, 39, 46, 0.4) 10%, rgba(26, 39, 46, 0.95) 100%), 
     url("../images/header.png") no-repeat center center !important;
 
-  /* SIZING: Lines repeat at 2px, others cover */
-  background-size: 100% 2px, cover, cover !important;
+  /* SIZING: Line height is set large (400px) so they feel randomized as they scroll */
+  background-size: 100% 2px, 100% 400px, cover, cover !important;
+  animation: flowLines 12s linear infinite; /* This moves the scan lines */
   
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
   padding: 60px 20px !important;
   text-align: center !important;
 
-  /* MOVING SCAN LINE */
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: rgba($green, 0.5);
-    box-shadow: 0 0 15px $green;
-    animation: scanLine 4s linear infinite;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* TITLE STYLING + GLITCH ON HOVER */
   h1 a {
     color: $orange !important;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.9);
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
     font-size: 2.8rem !important;
     text-transform: none !important;
     letter-spacing: 2px;
-    text-decoration: none !important;
-    display: block !important;
     font-weight: 900 !important;
     position: relative;
     z-index: 3;
-    pointer-events: auto !important; /* Re-enabled so hover works */
+    /* Subtle Glitch on Hover */
+    &:hover {
+      animation: subtleGlitch 2s ease-in-out infinite;
+    }
   }
+}
 
-  &:hover h1 a {
-    animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
-  }
+/* --- ANIMATIONS --- */
+
+/* Moves the multiple flowing lines background */
+@keyframes flowLines {
+  from { background-position: 0 0, 0 0, center, center; }
+  to { background-position: 0 0, 0 1000px, center, center; }
+}
+
+/* A Much More Subtle Glitch: Micro-shifts and faint color pulses */
+@keyframes subtleGlitch {
+  0% { transform: translate(0); opacity: 1; }
+  7% { transform: translate(-0.5px, 0.5px); text-shadow: 1px 0 $red, -1px 0 $green; }
+  10% { transform: translate(0); text-shadow: none; }
+  25% { opacity: 0.95; }
+  27% { opacity: 1; transform: translate(0.5px, -0.5px); }
+  30% { transform: translate(0); }
+  100% { transform: translate(0); }
+}
 
   .header-bio, p {
     color: $green !important;
