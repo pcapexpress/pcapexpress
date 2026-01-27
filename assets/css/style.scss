@@ -306,6 +306,14 @@ footer:after {
   font-size: 0.85rem !important;
   line-height: 1.4;
 }
+
+// 10. FOOTER SPACING FIX
+html {
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 // 10. ANIMATION ENGINES
 @keyframes scanLine { 0% { top: 0; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
 
