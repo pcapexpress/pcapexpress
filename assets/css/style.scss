@@ -29,6 +29,7 @@ body {
   flex-direction: column !important;
   align-items: center !important;
 }
+
   .wrapper {
   max-width: 900px !important;
   width: 100% !important;
@@ -36,7 +37,7 @@ body {
   padding: 0 !important; 
   display: block !important;
   height: auto !important; 
-  overflow: visible !important; /* Changed from hidden to allow footer shadow */
+  overflow: hidden !important; /* Changed from hidden to allow footer shadow */
   position: relative !important;
 }
 
@@ -280,12 +281,6 @@ footer small {
   margin: 0 !important;
   padding: 0 !important;
   height: 0 !important;
-}
-
-/* 3. Ensure the wrapper doesn't leak any margin */
-.wrapper {
-  overflow: hidden !important; 
-  height: auto !important;
 }
   
 /* --- 9. SLIM FOOTER --- */
