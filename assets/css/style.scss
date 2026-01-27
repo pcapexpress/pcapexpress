@@ -13,18 +13,16 @@ $dark-bg: #1A272E;
 
 html {
   background-color: $slate !important;
+  height: auto !important;
   margin: 0 !important;
-  padding: 0 !important;
-  height: auto !important; 
 }
 
 body {
   background-color: $slate !important;
   margin: 0 !important;
   padding: 0 !important;
-  /* Use auto height so it doesn't try to fill the monitor */
-  height: auto !important;
   min-height: 0 !important;
+  height: auto !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -264,11 +262,11 @@ section ul li {
 }
 
 /* --- 8. CLEANUP --- */
-/* 1. Kill the empty tags Jekyll is injecting into your header/bio */
+/* Deletes the empty paragraphs Jekyll is injecting */
 p:empty, 
-header p:empty, 
-section p:empty {
-  display: none !important;
+header p, 
+footer p {
+  display: none !important; 
   margin: 0 !important;
   padding: 0 !important;
   height: 0 !important;
@@ -282,7 +280,13 @@ footer small {
   padding: 0 !important;
   height: 0 !important;
 }
-  
+
+/* Kills the default table spacing at the bottom of your section */
+section table {
+  margin-bottom: 0 !important;
+  border-spacing: 0 !important;
+}
+
 /* --- 9. SLIM FOOTER --- */
 footer {
   display: flex !important;
@@ -304,6 +308,8 @@ footer {
   
   border-top: 3px solid $red !important; 
   border-radius: 0 0 8px 8px; 
+  box-shadow: 0 1px 0 $dark-bg !important; /* Acts as 'caulk' for the white line */
+  overflow: hidden !important;
   border-bottom: none !important; // Kill any ghost bottom borders
   outline: none !important;      // Remove any browser-added outlines
    
@@ -313,7 +319,7 @@ footer {
 
 footer:after {
   content: "© 2026 PcapExpress | Patience | Perseverance | Upward Mobility";
-  white-space: pre; 
+  white-space: nowrap; 
   color: $orange !important;
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
