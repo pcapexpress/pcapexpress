@@ -262,16 +262,6 @@ footer small {
   margin: 0 !important;
   padding: 0 !important;
 }
-
-/* Kill any theme-default footers outside your wrapper */
-.site-footer, #footer, .footer-col-wrapper {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
 /* --- 9. SLIM FOOTER --- */
 footer {
   display: flex !important;
@@ -279,11 +269,11 @@ footer {
   justify-content: center;
   max-width: 900px !important;
   width: 100% !important;
-  height: 10px !important;
+  height: 40px !important;
   
   /* MARGIN: 0 top (attach to section), 40px bottom (float) */
-  margin: 10px auto 0 auto !important; 
-  padding: 0 10px !important; 
+  margin: 0 auto 10px auto !important; 
+  padding: 0 20px !important; 
   position: relative !important;
 
   background: 
@@ -304,13 +294,6 @@ footer:after {
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
   line-height: 1.4;
-}
-
-// 10. FOOTER SPACING FIX
-html {
-  height: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 // 10. ANIMATION ENGINES
