@@ -29,7 +29,6 @@ body {
   width: 100% !important;
   margin: 0 auto !important;
   padding: 0 !important;
-  position: relative !important;
   display: block !important;
 }
 
@@ -126,20 +125,20 @@ header {
     //PILL LINKS
     li a {
       background: rgba($dark-bg, 0.8) !important;
-      border: 1px solid $orange !important;
+      border: 1px solid $red !important;
       color: $orange !important;
       padding: 8px 20px !important;
       border-radius: 50px !important; // Makes them pills
-      font-size: 0.9rem !important;
+      font-size: 0.7rem !important;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: 0.3s all ease !important;
+      transition: 0.5s all ease !important;
       pointer-events: auto !important;
 
       &:hover {
         background: $orange !important;
         color: $dark-bg !important;
-        box-shadow: 0 0 15px $orange;
+        box-shadow: 0 0 15px $red;
         transform: scale(1.05);
       }
     }
@@ -171,7 +170,7 @@ section {
   p, div, li { color: $yellow !important; }
 
   blockquote {
-    border-left: 4px solid $red !important;
+    border-left: 3px solid $red !important;
     background: $medium-bg !important;
     padding: 15px 20px !important;
     margin: 20px 0 !important;
@@ -255,10 +254,19 @@ header .view,
 header p.view, 
 header ul.downloads,
 header > ul:not(.nav-menu),
+//hides git hub tag
 footer small { 
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  /* Kill any theme-default footers outside your wrapper */
+.site-footer, #footer, .footer-col-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  }
 }
 
 /* --- 9. SLIM FOOTER --- */
