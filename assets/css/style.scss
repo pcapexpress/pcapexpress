@@ -15,24 +15,19 @@ html {
   background-color: $slate !important;
   margin: 0 !important;
   padding: 0 !important;
-  height: auto !important;
+  height: auto !important; 
 }
 
-// 2. GLOBAL RESET
 body {
   background-color: $slate !important;
-  color: $yellow !important;
   margin: 0 !important;
   padding: 0 !important;
-  
-  /* THE FIX: Remove the forced 100vh screen height */
-  min-height: auto !important; 
-  height: auto !important; 
-  
+  /* Use auto height so it doesn't try to fill the monitor */
+  height: auto !important;
+  min-height: 0 !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  overflow-x: hidden;
 }
   .wrapper {
   max-width: 900px !important;
@@ -268,15 +263,29 @@ section ul li {
 }
 
 /* --- 8. CLEANUP --- */
-/* Hide default theme elements */
-header .view, 
-header p.view, 
-header ul.downloads,
-header > ul:not(.nav-menu),
-footer small { 
+/* 1. Kill the empty tags Jekyll is injecting into your header/bio */
+p:empty, 
+header p:empty, 
+section p:empty {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  height: 0 !important;
+}
+
+/* 2. Kill the "Hosted on GitHub" text and its container <p> */
+footer p, 
+footer small {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
+
+/* 3. Ensure the wrapper doesn't leak any margin */
+.wrapper {
+  overflow: hidden !important; 
+  height: auto !important;
 }
   
 /* --- 9. SLIM FOOTER --- */
