@@ -18,7 +18,7 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   /* Use 'flex' to allow the wrapper to sit correctly, but 'auto' height to prevent stretching */
-  min-height: auto !important;
+  min-height: 100vh !important;
   height: auto !important; 
   display: flex !important;
   flex-direction: column !important;
