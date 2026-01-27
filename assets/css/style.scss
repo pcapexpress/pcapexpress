@@ -30,8 +30,12 @@ body {
   max-width: 900px !important;
   width: 100% !important;
   margin: 0 auto !important;
-  padding: 0 !important;
+  padding: 0 !important; 
   display: block !important;
+  height: auto !important; 
+  /* 'hidden' ensures the wrapper ends exactly where the footer ends */
+  overflow: hidden !important; 
+  position: relative !important;
 }
 
 /* --- 3. HEADER ARCHITECTURE (SLIM & CLEAN) --- */
@@ -153,6 +157,8 @@ section {
   max-width: 900px !important;
   margin: 0 auto !important;
   padding: 40px 20px !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 20px !important; // Adjust this to control gap between content and footer
   display: block !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -251,26 +257,29 @@ section ul li {
   }
 }
 
-/* --- 8. CLEANUP --- */
-/* Hide default theme elements */
-header .view, 
-header p.view, 
-header ul.downloads,
-header > ul:not(.nav-menu),
-footer small { 
+/* 8. CLEANUP - TARGETING THE GHOSTS */
+
+/* Kill the empty paragraphs Jekyll is inserting */
+p:empty {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
-/* Kill any theme-default footers outside your wrapper */
-.site-footer, #footer, .footer-col-wrapper {
+/* Kill the default theme text inside the footer so ONLY your © remains */
+footer p, 
+footer small {
   display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* Ensure the Section doesn't have a massive bottom margin pushing the footer */
+section {
+  padding-bottom: 20px !important; // Adjust this to control gap between content and footer
+  margin-bottom: 0 !important;
+}
+
 
 /* --- 9. SLIM FOOTER --- */
 footer {
