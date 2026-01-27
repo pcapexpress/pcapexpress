@@ -11,17 +11,18 @@ $orange: #E17A47;
 $medium-bg: #263842;
 $dark-bg: #1A272E;
 
-// 2. GLOBAL RESET & CENTERING
+// 2. GLOBAL RESET
 body {
   background-color: $slate !important;
-  background-image: none !important;
   color: $orange !important;
   margin: 0 !important;
   padding: 0 !important;
+  /* Use 'flex' to allow the wrapper to sit correctly, but 'auto' height to prevent stretching */
+  min-height: auto !important;
+  height: auto !important; 
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -29,45 +30,89 @@ body {
   max-width: 900px !important;
   width: 100% !important;
   margin: 0 auto !important;
-  position: relative !important;
+  padding: 0 !important;
   display: block !important;
 }
 
-// 3. HEADER ARCHITECTURE
+/* --- 3. HEADER ARCHITECTURE (SLIM & CLEAN) --- */
 header {
-  max-width: 900px !important;
-  margin: 10px auto 0 auto !important; /* Zero bottom margin to connect to section */
+  max-width: 900px !important;  
+  margin: 10px auto 0 auto !important; 
   width: 100% !important;
   display: block !important;
   box-sizing: border-box !important;
-  position: relative !important;
+  position: relative !important; 
+  overflow: hidden;
 
   background: 
-    linear-gradient(to bottom, rgba(26, 39, 46, 0.10) 10%, rgba(26, 39, 46, 0.95) 100%), 
+    linear-gradient(to bottom, rgba(26, 39, 46, 0.2) 10%, rgba(26, 39, 46, 0.95) 100%),
     url("../images/header.png") no-repeat center center !important;
   background-size: cover !important;
   border-bottom: 3px solid $red !important;
   border-radius: 8px 8px 0 0; 
-  padding: 60px 20px !important;
+  padding: 80px 20px !important; // Slim Padding
   text-align: center !important;
 
-  h1 a {
-    color: $orange !important;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.9);
-    font-size: 2.8rem !important;
-    text-transform: none !important;
-    letter-spacing: 2px;
-    pointer-events: none !important;
-    text-decoration: none !important;
-    display: block !important;
-    font-weight: 900 !important;
+  // LINE 1: Green Scan
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 25px;
+    background: linear-gradient(to top, rgba($green, 0.4) 0%, transparent 100%);
+    opacity: 0.5;
+    animation: scanLine 4s linear infinite;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
   }
 
-  .header-bio, p {
+  // LINE 2: Red Laser
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: rgba($red, 0.3);
+    animation: scanLine 1.5s linear infinite;
+    animation-delay: 0.5s;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+      background: linear-gradient(to top, rgba($green, 0.6) 0%, rgba($green, 0.2) 50%, transparent 100%);
+      box-shadow: 0 5px 25px rgba($green, 0.5);
+      animation: scanLine 4s linear infinite, dataStutter 1.5s steps(4) infinite;
+    }
+    &::before {
+      background: rgba($red, 0.8);
+      box-shadow: 0 0 10px #fff, 0 0 30px $red;
+      animation: scanLine 1.5s linear infinite, fastPulse 0.6s ease-in-out infinite;
+    }
+    h1 a { animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important; }
+    .header-bio { text-shadow: 0 0 10px $green; filter: brightness(1.5); }
+  }
+
+  h1 {
+    margin: 0 !important;
+    a {
+      color: $orange !important;
+      font-size: 2.2rem !important;
+      font-weight: 900 !important;
+      text-decoration: none !important;
+      pointer-events: none !important;
+    }
+  }
+
+  .header-bio {
     color: $green !important;
     font-weight: bold !important;
-    font-size: 1.1rem !important;
-    margin: 15px 0 !important;
+    font-size: 0.9rem !important;
+    margin: 5px 0 !important;
     display: block !important;
   }
 
@@ -75,14 +120,35 @@ header {
     list-style: none !important;
     display: flex !important;
     justify-content: center !important;
-    gap: 20px !important;
-    margin-top: 20px !important;
+    gap: 15px !important;
+    margin-top: 15px !important;
     padding: 0 !important;
-    li { background: transparent !important; border: none !important; }
+    
+    //PILL LINKS
+    li a {
+      background: rgba($dark-bg, 0.8) !important;
+      border: 1px solid $red !important;
+      color: $orange !important;
+      padding: 8px 20px !important;
+      border-radius: 50px !important; // Makes them pills
+      font-size: 0.7rem !important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.5s all ease !important;
+      pointer-events: auto !important;
+
+      &:hover {
+        background: $orange !important;
+        color: $dark-bg !important;
+        box-shadow: 0 0 15px $red;
+        transform: scale(1.05);
+      }
+    }
   }
 }
 
-// 4. MAIN CONTENT AREA
+
+/* --- 4. MAIN CONTENT AREA --- */
 section {
   max-width: 900px !important;
   margin: 0 auto !important;
@@ -106,18 +172,42 @@ section {
   p, div, li { color: $yellow !important; }
 
   blockquote {
-    border-left: 4px solid $red !important;
-    background: $dark-bg !important;
+    border-left: 3px solid $red !important;
+    background: $medium-bg !important;
     padding: 15px 20px !important;
     margin: 20px 0 !important;
     p { 
       color: $yellow !important; 
       font-style: italic; 
-      margin: 0 !important; // Keeps the text perfectly centered in the box
+      margin: 0 !important;
     }
+  }
 }
 
-// 5. GLOBAL LINK STYLE (Restored Red Animation)
+/* --- 5. CODE BLOCKS --- */
+pre, code {
+  background-color: #0a0a0a !important; 
+  background-image: repeating-conic-gradient(#1a1a1a 0% 25%, #222 0% 50%) !important;
+  background-size: 4px 4px !important;
+  color: $green !important;
+  border: 1px solid rgba($green, 0.3);
+  padding: 15px !important;
+  display: block;
+  font-family: 'Courier New', monospace !important;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    animation: staticFlicker 0.2s infinite;
+    pointer-events: none;
+  }
+}
+
+/* --- 6. GLOBAL LINK STYLE --- */
 a {
   color: $orange !important;
   text-decoration: none !important;
@@ -135,7 +225,7 @@ a {
   }
 }
 
-// 6. SKILLS / PROJECT CARDS (Restored Red Hover)
+/* --- 7. ANIMATED CARDS --- */
 section ul li {
   list-style: none;
   background: $medium-bg !important;
@@ -147,43 +237,42 @@ section ul li {
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: $red !important; /* Card turns red on hover */
-    color: white !important;           /* Text turns white for contrast */
-    transform: translateX(5px);
+    background-color: $red !important; 
+    color: #ffffff !important;           
+    transform: translateX(8px); // Slightly more movement for "impact"
 
-    // Ensure nested text turns white too
-    p, span, div { color: white !important; }
+    p, span, div, strong { color: #ffffff !important; }
+    
+    // Adjusts links inside the card so they don't disappear
+    a { 
+      color: #ffffff !important; 
+      background-image: linear-gradient(#ffffff, #ffffff);
+    }
   }
 }
 
-// 7. CODE BLOCKS
-pre, code {
-  background: $dark-bg !important;
-  color: $green !important;
-  font-family: 'Courier New', monospace !important;
-  
-  // REMOVE UNDERLINES
-  text-decoration: none !important;
-  background-image: none !important; 
-  
-  // TRANSITION FOR SMOOTHNESS
-  transition: all 0.3s ease;
-
-  &:hover {
-    // TRIGGER THE GLITCH
-    animation: subtleGlitch 2s ease-in-out infinite !important;
-    border-color: rgba($green, 0.8); // Make the border glow slightly
-    box-shadow: 0 0 10px rgba($green, 0.2);
-  }
-}
-
-// 8. CLEANUP
-header .view, header p.view, header ul.downloads, 
-header > ul:not(.nav-menu), footer small {
+/* --- 8. CLEANUP --- */
+/* Hide default theme elements */
+header .view, 
+header p.view, 
+header ul.downloads,
+header > ul:not(.nav-menu),
+footer small { 
   display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-// 9. SLIM FOOTER (Restored Symmetrical Attachment)
+/* Kill any theme-default footers outside your wrapper */
+.site-footer, #footer, .footer-col-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* --- 9. SLIM FOOTER --- */
 footer {
   display: flex !important;
   align-items: center;
@@ -191,26 +280,60 @@ footer {
   max-width: 900px !important;
   width: 100% !important;
   height: 40px !important;
-  margin: 0 auto 10px auto !important; /* Zero top margin to touch the section */
-  padding: 0 20px !important;
-
-  /* POSITION OVERRIDE */
-  position: relative !important; /* Changes from 'fixed' to 'relative' */
-  bottom: auto !important;       /* Disables any 'pinned' bottom settings */
-  left: auto !important;
   
+  /* MARGIN: 0 top (attach to section), 40px bottom (float) */
+  margin: 0 auto 10px auto !important; 
+  padding: 0 20px !important; 
+  position: relative !important;
+
   background: 
     linear-gradient(rgba(26, 39, 46, 0.80), rgba(26, 39, 46, 0.80)), 
     url("../images/footer.png") no-repeat center center !important;
   background-size: cover !important;
-  border-top: 3px solid $red !important;
-  border-radius: 0 0 8px 8px;
+  
+  border-top: 3px solid $red !important; 
+  border-radius: 0 0 8px 8px; 
+  text-align: center !important;
   box-sizing: border-box !important;
+  z-index: 10;
 }
 
 footer:after {
   content: "© 2026 PcapExpress | Patience | Perseverance | Upward Mobility";
+  white-space: pre; 
   color: $orange !important;
   font-family: 'Courier New', monospace;
   font-size: 0.85rem !important;
+  line-height: 1.4;
 }
+
+// 10. FOOTER SPACING FIX
+html {
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// 10. ANIMATION ENGINES
+@keyframes scanLine { 0% { top: 0; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+
+@keyframes glitchText {
+  0% { transform: translate(0); text-shadow: -2px -2px $red, 2px 2px $green; }
+  25% { transform: translate(-2px, 2px); text-shadow: 2px 2px $red, -2px -2px $green; }
+  50% { transform: translate(2px, -2px); text-shadow: -2px 2px $red, 2px -2px $green; }
+  100% { transform: translate(0); text-shadow: -2px -2px $red, 2px 2px $green; }
+}
+
+@keyframes fastPulse {
+  0%, 100% { filter: brightness(1); box-shadow: 0 0 10px $red; }
+  50% { filter: brightness(3); box-shadow: 0 0 40px $red, 0 0 60px rgba($red, 0.6); }
+}
+
+@keyframes dataStutter {
+  0%, 100% { opacity: 0.8; filter: brightness(1); }
+  25% { opacity: 0.5; filter: brightness(2.5); }
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; box-shadow: 0 0 5px $green; } 50% { opacity: 0.2; } }
+
+@keyframes staticFlicker { 0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; } }
