@@ -17,8 +17,6 @@ body {
   color: $orange !important;
   margin: 0 !important;
   padding: 0 !important;
-  /* Use 'flex' to allow the wrapper to sit correctly, but 'auto' height to prevent stretching */
-  min-height: auto !important;
   height: auto !important; 
   display: flex !important;
   flex-direction: column !important;
@@ -152,13 +150,11 @@ header {
 }
 
 
-/* --- 4. MAIN CONTENT AREA --- */
+* --- 4. MAIN CONTENT AREA --- */
 section {
   max-width: 900px !important;
   margin: 0 auto !important;
-  padding: 40px 20px !important;
-  margin-bottom: 0 !important;
-  padding-bottom: 20px !important; // Adjust this to control gap between content and footer
+  padding: 40px 20px 20px 20px !important; /* Top, Right, Bottom, Left */
   display: block !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -281,13 +277,6 @@ footer small {
   padding: 0 !important;
 }
 
-/* Ensure the Section doesn't have a massive bottom margin pushing the footer */
-section {
-  padding-bottom: 20px !important; // Adjust this to control gap between content and footer
-  margin-bottom: 0 !important;
-}
-
-
 // 9. SLIM FOOTER
 footer {
   display: flex !important;
@@ -308,6 +297,11 @@ footer {
   
   border-top: 3px solid $red !important; 
   border-radius: 0 0 8px 8px; 
+
+  border-bottom: none !important;
+  box-shadow: 0 1px 0 $dark-bg !important; /* This hides the white gap */
+  overflow: hidden !important;
+  
   text-align: center !important;
   box-sizing: border-box !important;
 }
