@@ -228,13 +228,13 @@ section {
 
   backface-visibility: hidden;      /* Prevents flickering */
   -webkit-font-smoothing: subpixel-antialiased;
+  transform-style: preserve-3d;
   transform: translateZ(0) scale(1.0);  
   
   transition: 
-    /* Property | Duration | Timing | Delay */
-    transform    0.4s ease-out 0s,   /* Instant Zoom */
-    box-shadow   1.0s ease-in-out 0.3s,                       /* Wait 0.3s, then Glow slowly */
-    border-color 1.0s ease-in-out 0.3s;                       /* Wait 0.3s, then Color fade */
+    transform    0.3s ease-out 0s,        /* Faster Zoom (0.3s) */
+    box-shadow   0.6s ease-in-out 0.1s,   /* Glow starts almost immediately (0.1s) */
+    border-color 0.6s ease-in-out 0.1s;   /* Finishes in 0.6s total instead of 1s */
 
   &:hover {
     transform: scale(1.02);
