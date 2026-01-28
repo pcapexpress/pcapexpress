@@ -196,17 +196,18 @@ section {
 // THE --- DIVIDER LINE
   
   hr {
-    border: none;
-    height: 2px;
-    background-color: $red !important;
-    margin: 40px 0;
+  border: none;               /* Remove the default gray line */
+  height: 2px;                /* Keep it thin */
+  background-color: $red;      /* Your palette red */
+  margin: 40px 0;             /* Give it some breathing room */
+  position: relative;
+  overflow: visible;
+
+  /* The "Glow" */
+  box-shadow: 0 0 10px rgba($red, 0.8), 0 0 20px rgba($red, 0.4);
   
-    /* REUSING YOUR ANIMATION */
-    animation: fastPulse 2s ease-in-out infinite;
-  
-    /* Optional: Making it look like a "wire" */
-    opacity: 0.8;
-  }
+  /* The "Pulse" Animation */
+  animation: laserPulse 3s ease-in-out infinite;
 }
 
 // 5. CODE BLOCKS
@@ -382,12 +383,7 @@ footer:after {
 
 // 10. ANIMATION ENGINES
 
-@keyframes scanLine { 
-  0% { top: 0; opacity: 0; } 
-  5% { opacity: 1; } 
-  95% { opacity: 1; } 
-  100% { top: 100%; opacity: 0; }
-}
+//HEADER TITLE
 
 @keyframes glitchText {
   0% { transform: translate(0); text-shadow: -2px -2px $red, 2px 2px $green; }
@@ -396,16 +392,33 @@ footer:after {
   100% { transform: translate(0); text-shadow: -2px -2px $red, 2px 2px $green; }
 }
 
+//HEADER GREEN
+
+@keyframes scanLine { 
+  0% { top: 0; opacity: 0; } 
+  5% { opacity: 1; } 
+  95% { opacity: 1; } 
+  100% { top: 100%; opacity: 0; }
+}
+
+//HEADER RED
+
 @keyframes fastPulse {
   0%, 100% { filter: brightness(1); box-shadow: 0 0 10px $red; }
   50% { filter: brightness(3); box-shadow: 0 0 40px $red, 0 0 60px rgba($red, 0.6); }
 }
 
-@keyframes dataStutter {
-  0%, 100% { opacity: 0.8; filter: brightness(1); }
-  25% { opacity: 0.5; filter: brightness(2.5); }
+//DIVIDER PULSE
+
+@keyframes laserPulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 8px rgba($red, 0.6);
+    transform: scaleX(0.98); /* Slight shrink */
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba($red, 1), 0 0 30px rgba($red, 0.5);
+    transform: scaleX(1);    /* Full width */
+  }
 }
-
-@keyframes blink { 0%, 100% { opacity: 1; box-shadow: 0 0 5px $green; } 50% { opacity: 0.2; } }
-
-@keyframes staticFlicker { 0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; } }
