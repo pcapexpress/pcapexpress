@@ -59,7 +59,7 @@ header {
   padding: 80px 20px !important; // Slim Padding
   text-align: center !important;
 
-  // LINE 1: Green Scan
+  // SCAN LINE GREEN IDLE
   &::after {
   content: "";
   position: absolute;
@@ -75,44 +75,48 @@ header {
   );
   
   opacity: 0.8; 
-  animation: scanLine 1s linear infinite;
+  animation: scanLine 4s linear infinite;
   transition: all 0.4s ease;
   pointer-events: none;
   z-index: 2;
 }
 
-  // LINE 2: Red Laser
+  // SCAN LINE RED IDLE
   &::before {
     content: "";
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
     background: rgba($red, 0.3);
-    animation: scanLine 0.5s linear infinite;
+    animation: scanLine 1s linear infinite;
     animation-delay: 0.5s;
     transition: all 0.4s ease;
     pointer-events: none;
     z-index: 2;
   }
-
+  //ON MOUSE HOVER
   &:hover {
-    
+
+    //GREEN LINE HOVER
     &::after {
     opacity: 1;
-    
     /* Stronger, multi-layered glow */
     box-shadow: 
       0 0 15px rgba($green, 0.8), 
       0 0 30px rgba($green, 0.4); 
     
     /* Overclocked animation as we discussed */
-    animation: scanLine 0.8s linear infinite, dataStutter 0.2s steps(4) infinite;
+    animation: scanLine 4s linear infinite, dataStutter 0.1s steps(4) infinite;
     }
+
+    //RED LINE HOVER
     &::before {
       background: rgba($red, 0.8);
       box-shadow: 0 0 10px #fff, 0 0 30px $red;
-      animation: scanLine 1.5s linear infinite, fastPulse 0.4s infinite;
+      animation: scanLine 1.5s linear infinite, fastPulse 0.2s infinite;
     }
+
+    //HEADER GLITCH
     h1 a { animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important; }
     .header-bio { text-shadow: 0 0 10px $green; filter: brightness(1.5); }
   }
@@ -437,16 +441,36 @@ footer:after {
 
 //IDLE SCAN LINES
 @keyframes scanLine { 
-  0% { top: 0; opacity: 0; } 
-  5% { opacity: 1; } 
-  95% { opacity: 1; } 
-  100% { top: 100%; opacity: 0; }
+  0% { 
+    top: -50px; /* Start completely out of view */
+    opacity: 0; 
+  } 
+  10% { 
+    opacity: 1; /* Fade in quickly as it enters */
+  } 
+  90% { 
+    opacity: 1; /* Stay solid through the middle */
+  } 
+  100% { 
+    top: 100%;  /* End exactly at the bottom edge */
+    opacity: 0; /* Fade out just as it hits the floor */
+  }
 }
 
 //SCAN LINE RED
 @keyframes fastPulse {
-  0%, 100% { filter: brightness(1); box-shadow: 0 0 10px $red; }
-  50% { filter: brightness(3); box-shadow: 0 0 40px $red, 0 0 60px rgba($red, 0.6); }
+  /* The "Cool" State */
+  0%, 100% { 
+    filter: brightness(1); 
+    box-shadow: 0 0 10px $red; 
+    transform: scaleY(1); /* Keep it thin */
+  }
+  /* The "Spark" State */
+  10%, 20% { 
+    filter: brightness(2.5) contrast(1.5); 
+    box-shadow: 0 0 25px $red, 0 0 50px rgba($red, 0.8);
+    transform: scaleY(1.5); /* The laser physically "widens" from the energy */
+  }
 }
 
 //SCAN LINE GREEN
