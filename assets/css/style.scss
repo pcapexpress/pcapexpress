@@ -205,9 +205,17 @@ hr {
   
   /* The Warm Glow */
   box-shadow: 0 0 10px rgba($orange, 0.4), 0 0 2px rgba($orange, 0.2);
-  animation: staticFlickerRandomized 0.4s infinite alternate;
-  }
+  
+  /* 1. Slower, smoother flicker (0.4s instead of 0.2s) */
+  /* 'alternate' makes the blink feel like it's breathing, not snapping */
+  animation: staticFlicker 0.4s infinite alternate;
 }
+
+/* 2. RANDOMIZATION: Desyncing multiple lines */
+/* This tells every 2nd, 3rd, and 4th line to start at a different time */
+hr:nth-of-type(2n) { animation-delay: 0.1s; animation-duration: 0.35s; }
+hr:nth-of-type(3n) { animation-delay: 0.25s; animation-duration: 0.5s; }
+hr:nth-of-type(4n) { animation-delay: 0.05s; animation-duration: 0.45s; }
 
 // 5. CODE BLOCKS
 
