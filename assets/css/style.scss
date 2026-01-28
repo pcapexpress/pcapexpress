@@ -226,13 +226,13 @@ section {
   
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 
-  /* SEPARATE SPEEDS DEFINED HERE */
-  /* transform (zoom) takes 0.6s (slow/smooth) */
-  /* box-shadow (glow) takes 0.2s (fast/snappy) */
-  /* border-color takes 0.2s */
+  backface-visibility: hidden;      /* Prevents flickering */
+  -webkit-font-smoothing: subpixel-antialiased;
+  transform: translateZ(0) scale(1.0);  
+  
   transition: 
     /* Property | Duration | Timing | Delay */
-    transform    0.4s cubic-bezier(0.165, 0.84, 0.44, 1) 0s,   /* Instant Zoom */
+    transform    0.4s ease-out 0s,   /* Instant Zoom */
     box-shadow   1.0s ease-in-out 0.3s,                       /* Wait 0.3s, then Glow slowly */
     border-color 1.0s ease-in-out 0.3s;                       /* Wait 0.3s, then Color fade */
 
@@ -240,7 +240,8 @@ section {
     transform: scale(1.02);
     border-color: $orange !important;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba($orange, 0.6);
-  }
+    image-rendering: -webkit-optimize-contrast;
+    }
   }
 }
 
