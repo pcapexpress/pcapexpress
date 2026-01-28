@@ -207,30 +207,29 @@ pre, code {
   overflow: hidden;
   transition: background-color 0.3s ease;
 
-   
-  /* Scanline Overlay - Neutral Version */
- &::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    
-    /* This creates a sharp 1px black line every 2px */
-    background: linear-gradient(
-      rgba(0, 0, 0, 0) 50%, 
-      rgba(0, 0, 0, 0.4) 50%
-    );
-    background-size: 100% 2px; 
-    
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0.6; /* Higher opacity for visible lines */
-  }
+  /* Scanline Overlay */
+  &::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.1) 50%
+  ), linear-gradient(
+    90deg, 
+    rgba(255, 0, 0, 0.03), 
+    rgba(0, 255, 0, 0.01), 
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 3px 100%; /* Creates the "grid" or "line" effect */
+  pointer-events: none;
+  z-index: 2;
+}
 
   &:hover {
     background-color: #0d0d0d !important;
-    &::after { 
-      opacity: 0.5; /* Still subtle on hover */
-    }
+    &::after { opacity: 0.8; }
   }
 
   /* Color Classes */
