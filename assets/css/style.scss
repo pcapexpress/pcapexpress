@@ -84,16 +84,20 @@ header {
   }
 
   &:hover {
+    filter: brightness(1.2);
+      // LINE 1: Green Scan - Speeding up from 4s to 1s
     &::after {
       opacity: 1;
       background: linear-gradient(to top, rgba($green, 0.6) 0%, rgba($green, 0.2) 50%, transparent 100%);
       box-shadow: 0 5px 25px rgba($green, 0.5);
-      animation: scanLine 4s linear infinite, dataStutter 1.5s steps(4) infinite;
+      animation: scanLine 1s linear infinite, dataStutter 0.5s steps(4) infinite;
     }
+      // LINE 2: Red Laser - Speeding up from 1.5s to 0.4s
     &::before {
       background: rgba($red, 0.8);
       box-shadow: 0 0 10px #fff, 0 0 30px $red;
-      animation: scanLine 1.5s linear infinite, fastPulse 0.6s ease-in-out infinite;
+      animation: scanLine 0.4s linear infinite, fastPulse 0.2s ease-in-out infinite;
+       
     }
     h1 a { animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important; }
     .header-bio { text-shadow: 0 0 10px $green; filter: brightness(1.5); }
@@ -415,7 +419,6 @@ footer:after {
 // 10. ANIMATION ENGINES
 
 //HEADER TITLE
-
 @keyframes glitchText {
   0% { transform: translate(0); text-shadow: -2px -2px $red, 2px 2px $green; }
   25% { transform: translate(-2px, 2px); text-shadow: 2px 2px $red, -2px -2px $green; }
@@ -424,7 +427,6 @@ footer:after {
 }
 
 //HEADER GREEN
-
 @keyframes scanLine { 
   0% { top: 0; opacity: 0; } 
   5% { opacity: 1; } 
@@ -433,20 +435,24 @@ footer:after {
 }
 
 //HEADER RED
-
 @keyframes fastPulse {
   0%, 100% { filter: brightness(1); box-shadow: 0 0 10px $red; }
   50% { filter: brightness(3); box-shadow: 0 0 40px $red, 0 0 60px rgba($red, 0.6); }
 }
 
-@keyframes blink { 0%, 100% { opacity: 1; box-shadow: 0 0 5px $green; } 50% { opacity: 0.2; } }
-
+//SCAN LINE GLITCH EFFECT
+@keyframes dataStutter {
+  0%   { opacity: 0.8; }
+  25%  { opacity: 0.3; }
+  50%  { opacity: 1.0; }
+  75%  { opacity: 0.5; }
+  100% { opacity: 0.9; }
+}
+    
 //CODE BLOCK FLICKER
-  
 @keyframes staticFlicker { 0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; } }
 
 //DIVIDER PULSE
-  
 @keyframes laserPulse {
   0%, 100% {
     opacity: 0.6;
