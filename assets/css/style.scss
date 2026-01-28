@@ -209,14 +209,14 @@ section {
     /* Layer 1: The "Tight" Glow (Subtle 4px spread) */
     /* Layer 2: The "Shadow Glow" (Deep 15px spread, low opacity) */
     box-shadow: 
-      0 0 4px rgba($orange, 0.4), 
-      0 0 15px rgba(0, 0, 0, 0.7); /* This creates the "Shadow" depth behind the glow */
+      0 0 6px rgba($orange, 0.4), 
+      0 0 18px rgba(0, 0, 0, 0.7); /* This creates the "Shadow" depth behind the glow */
     
     /* Overall line opacity - lowered for subtleness */
-    opacity: 0.5; 
+    opacity: 0.7; 
 
     /* Applying the pulse */
-    animation: staticFlicker 0.4s infinite alternate;
+    animation: staticFlicker 0.5s infinite alternate;
   }
 
   /* Desync Logic - Using just hr: since it's nested */
