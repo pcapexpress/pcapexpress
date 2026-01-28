@@ -214,7 +214,7 @@ section {
   // IMAGE STYLING
   img {
   /* ... [Your existing Frame/Radius/Layout code] ... */
-  border: 2px solid rgba($orange, 0.7) !important;
+  border: 2px solid rgba($orange, 0.75) !important;
   background-color: rgba($dark-bg, 0.5) !important;
   border-radius: 20px !important;
   overflow: hidden !important; 
@@ -226,21 +226,15 @@ section {
   
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 
-  backface-visibility: hidden;      /* Prevents flickering */
-  -webkit-font-smoothing: subpixel-antialiased;
-  transform-style: preserve-3d;
-  transform: translateZ(0) scale(1.0);  
-  
   transition: 
     transform    0.3s ease-out 0s,        /* Faster Zoom (0.3s) */
     box-shadow   0.6s ease-in-out 0.1s,   /* Glow starts almost immediately (0.1s) */
     border-color 0.6s ease-in-out 0.1s;   /* Finishes in 0.6s total instead of 1s */
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
     border-color: $orange !important;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba($orange, 0.6);
-    image-rendering: -webkit-optimize-contrast;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7), 0 0 20px rgba($orange, 0.6);
     }
   }
 }
