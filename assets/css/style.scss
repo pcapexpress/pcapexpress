@@ -199,22 +199,20 @@ section {
 hr {
     border: none !important;
     height: 1px !important;
+    background-color: $orange !important;
     margin: 50px auto !important;
     width: 95% !important;
     display: block !important;
     overflow: visible !important; 
 
-    /* ENHANCED GLOW ARCHITECTURE */
+    /* SUBTLE GLOW ARCHITECTURE */
     box-shadow: 
-      0 0 1px rgba($red, 1.0),              /* Layer 1: The "Hot" center wire */
-      0 0 6px rgba($orange, 0.9),          /* Layer 2: The primary orange radiation */
-      0 0 12px rgba($orange, 0.7);          /* Layer 3: The soft "Environmental" bloom */
+      0 0 4px rgba($orange, 0.4), 
+      0 0 15px rgba(0, 0, 0, 0.7); /* This creates the "Shadow" depth behind the glow */
     
-    /* Increased opacity to allow the glow to shine through */
-    opacity: 0.9; 
-
-    /* Applying the pulse */
-    animation: staticFlicker 1.5s infinite alternate;
+    /* Overall line opacity - lowered for subtleness */
+    opacity: 0.5; 
+    animation: staticFlicker 0.4s infinite alternate;
   }
 
   /* Desync Logic - Using just hr: since it's nested */
@@ -223,7 +221,7 @@ hr {
   hr:nth-of-type(4n) { animation-delay: 0.05s; animation-duration: 0.45s; }
 
   //IMAGE STYLING
-  section img {
+  img {
     /* 1. The Frame */
     border: 2px solid rgba($orange, 0.4) !important;
     padding: 8px !important; // Creates a "matting" effect between image and frame
