@@ -214,15 +214,15 @@ section {
   // IMAGE STYLING
   img {
   /* ... [Your existing Frame/Radius/Layout code] ... */
-  border: 2px solid rgba($orange, 0.4) !important;
-  background-color: rgba($dark-bg, 0.5) !important;
+  border: 2px solid rgba($orange, 0.6) !important;
+  background-color: rgba($dark-bg, 0.4) !important;
   border-radius: 20px !important;
   overflow: hidden !important; 
   padding: 0 !important;
   display: block !important;
   max-width: 90% !important;
   height: auto !important;
-  margin: 35px 0 !important; // Sticking with your left-alignment choice
+  margin: 35px auto !important; // Sticking with your left-alignment choice
   
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
@@ -238,7 +238,7 @@ section {
   &:hover {
     cursor: zoom-in !important;
     border-color: $orange !important;
-    transform: scale(1.05); /* The slow lens zoom */
+    transform: scale(1.02); /* The slow lens zoom */
     
     /* The fast orange "power up" glow */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba($orange, 0.5);
