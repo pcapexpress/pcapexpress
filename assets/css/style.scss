@@ -207,35 +207,31 @@ pre, code {
   overflow: hidden;
   transition: background-color 0.3s ease;
 
-  /* Terminal Window Dots */
-  &::before {
-    content: "● ● ●";
-    position: absolute;
-    top: 10px; left: 15px;
-    font-size: 12px; letter-spacing: 2px;
-    color: #ff5f56; 
-    text-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f; 
-    opacity: 0.7;
-    z-index: 3;
-  }
-
-  /* Scanline Overlay */
+   /* Scanline Overlay */
+  /* Scanline Overlay - Neutral Version */
   &::after {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-    background-size: 100% 3px, 3px 100%;
+    
+    /* Changed the red/green/blue lines to subtle dark transparent lines */
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.2) 50%
+    );
+    background-size: 100% 3px; /* Just horizontal lines, no red tint */
+    
     pointer-events: none;
     z-index: 2;
-    opacity: 0.5;
+    opacity: 0.3; /* Lowered starting opacity */
     transition: opacity 0.3s ease;
   }
 
   &:hover {
     background-color: #0d0d0d !important;
-    &::after { opacity: 0.8; }
+    &::after { 
+      opacity: 0.5; /* Still subtle on hover */
+    }
   }
 
   /* Color Classes */
