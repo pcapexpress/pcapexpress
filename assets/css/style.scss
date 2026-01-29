@@ -17,7 +17,10 @@ body {
   color: $orange !important;
   margin: 0 !important;
   padding: 0 !important;
-  height: auto !important; 
+  
+  min-height: 100vh !important; 
+  height: auto !important;
+  
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -29,11 +32,12 @@ body {
   width: 100% !important;
   margin: 0 auto !important;
   padding: 0 !important; 
-  display: block !important;
+  
   height: auto !important; 
-  /* 'hidden' ensures the wrapper ends exactly where the footer ends */
   overflow: hidden !important; 
   position: relative !important;
+  margin-bottom: 0 !important; 
+  display: flow-root !important;
 }
 
 // 3. HEADER ARCHITECTURE
@@ -55,50 +59,64 @@ header {
   padding: 80px 20px !important; // Slim Padding
   text-align: center !important;
 
-  // LINE 1: Green Scan
+  // SCAN LINE GREEN IDLE
   &::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 25px;
-    background: linear-gradient(to top, rgba($green, 0.4) 0%, transparent 100%);
-    opacity: 0.5;
-    animation: scanLine 4s linear infinite;
-    transition: all 0.4s ease;
-    pointer-events: none;
-    z-index: 2;
-  }
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 35px; /* Increased height for better gradient falloff */
+  
+  /* The "Leading Edge" trick: A solid line at the bottom of the gradient makes it pop */
+  background: linear-gradient(
+    to top, 
+    rgba($green, 1.0) 0%,    /* Solid neon at the leading edge */
+    rgba($green, 0.4) 20%,   /* Mid-glow */
+    transparent 100%         /* Fade out */
+  );
+  
+  opacity: 0.8; 
+  animation: scanLine 4s linear infinite;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
 
-  // LINE 2: Red Laser
+  // SCAN LINE RED IDLE
   &::before {
     content: "";
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
     background: rgba($red, 0.3);
-    animation: scanLine 1.5s linear infinite;
+    animation: scanLine 1s linear infinite;
     animation-delay: 0.5s;
     transition: all 0.4s ease;
     pointer-events: none;
     z-index: 2;
   }
-
+  //ON MOUSE HOVER
   &:hover {
-    filter: brightness(0.5);
-      // LINE 1: Green Scan - Speeding up from 4s to 1s
+
+    //GREEN LINE HOVER
     &::after {
-      opacity: 1;
-      background: linear-gradient(to top, rgba($green, 0.6) 0%, rgba($green, 0.2) 50%, transparent 100%);
-      box-shadow: 0 5px 25px rgba($green, 0.5);
-      animation: scanLine 4s linear infinite, dataStutter 2s steps(4) infinite;
+    opacity: 1;
+    /* Stronger, multi-layered glow */
+    box-shadow: 
+      0 0 15px rgba($green, 0.8), 
+      0 0 30px rgba($green, 0.4); 
+    
+    /* Overclocked animation as we discussed */
+    animation: scanLine 4s linear infinite, dataStutter 0.1s steps(4) infinite;
     }
-      // LINE 2: Red Laser - Speeding up from 1.5s to 0.4s
+
+    //RED LINE HOVER
     &::before {
       background: rgba($red, 0.8);
       box-shadow: 0 0 10px #fff, 0 0 30px $red;
-      animation: scanLine 1.5s linear infinite, fastPulse 1.5s ease-in-out infinite;
-       
+      animation: scanLine 1.5s linear infinite, fastPulse 0.2s infinite;
     }
+
+    //HEADER GLITCH
     h1 a { animation: glitchText 0.3s cubic-bezier(.25, .46, .45, .94) both infinite !important; }
     .header-bio { text-shadow: 0 0 10px $green; filter: brightness(1.5); }
   }
@@ -157,31 +175,39 @@ header {
 // 4. MAIN CONTENT AREA
 section {
   max-width: 900px !important;
-  margin: 0 auto !important;
-  padding: 40px 20px 20px 20px !important;
-  display: block !important;
   width: 100% !important;
+  margin: 0 auto !important;
+  padding: 40px 20px 20px 20px !important; // CHECK THIS
+  display: block !important;
   box-sizing: border-box !important;
-  background-color: transparent !important;
+  background: none !important;
+  margin-bottom: 0 !important; 
+  &:last-of-type {
+    padding-bottom: 10px !important;
+}
 
+
+  //HEADERS
   h1, h2 { color: $red !important; }
   h3 { color: $orange !important; }
   h4 { color: $green !important; }
-
   h5 { 
     color: $green !important; 
     font-family: 'Courier New', monospace !important;
     border-bottom: 2px solid rgba(74, 177, 157, 0.3);
     display: inline-block;
   }
-
+  
+  //REGULAR TEXT
   p, div, li { color: $yellow !important; }
-
+  
+  //BOLD correction
   strong, b {
     color: inherit !important;
     font-weight: bold !important;
   }
 
+  //THE > BLOCK
   blockquote {
     border-left: 3px solid $red !important;
     background: $medium-bg !important;
@@ -257,7 +283,7 @@ pre, code {
   overflow: hidden;
   transition: background-color 0.3s ease;
    
-  //FLICKER ANIMATION
+  //BLOCK FLICKER ANIMATION
   
   &::before {
     content: "";
@@ -268,7 +294,7 @@ pre, code {
     pointer-events: none;
   }
 
-  //COLOR AND GLOW
+  //TEXT COLOR AND GLOW
   
   .red    { color: $red !important; text-shadow: 0 0 5px rgba($red, 0.5); }
   .green  { color: $green !important; text-shadow: 0 0 5px rgba($green, 0.5); }
@@ -277,7 +303,7 @@ pre, code {
   .slate  { color: $slate !important; }
 }
 
-//DATA LABEL
+//CORNER LABEL
 
 pre[data-label]::after {
   content: attr(data-label);
@@ -338,43 +364,43 @@ section ul li {
 
 // 8. CLEANUP
 
+/* This ensures the body container recognizes its true bottom edge */
+body::after {
+  content: "";
+  display: block;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Grouping everything that needs to stay hidden */
 header .view, 
 header p.view, 
-header ul:not(.nav-menu) {
-  display: none !important;
-  visibility: hidden !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-}
-
-section table, 
-section td, 
-section tr {
-  border: none !important;
-  border-collapse: collapse !important;
-}
-
-/* Kill the empty paragraphs Jekyll is inserting */
-p:empty {
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Kill the default theme text inside the footer so ONLY your © remains */
+header ul:not(.nav-menu),
+p:empty,
 footer p, 
 footer small {
   display: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  line-height: 0 !important;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-/* Ensure the Section doesn't have a massive bottom margin pushing the footer */
-section {
-  padding-bottom: 20px !important; // Adjust this to control gap between content and footer
-  margin-bottom: 0 !important;
+/* 2. TABLE RESET */
+section table {
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  
+  td, tr {
+    border: none;
+  }
 }
 
 // 9. SLIM FOOTER
@@ -386,24 +412,21 @@ footer {
   max-width: 900px !important;
   width: 100% !important;
   height: 40px !important;
-  
-  margin: 10px auto 10px auto !important; 
+
+  margin: 60px auto 10px auto !important; 
   padding: 0 20px !important; 
   position: relative !important;
 
   background: 
     linear-gradient(rgba(26, 39, 46, 0.80), rgba(26, 39, 46, 0.80)), 
-    url("../images/footer.png") no-repeat center center !important;
+    url("../images/footer.png") no-repeat bottom center !important; /* Anchored to bottom */
   background-size: cover !important;
- 
   
   border-top: 3px solid $red !important; 
   border-radius: 0 0 8px 8px; 
-
   border-bottom: none !important;
-  box-shadow: 0 1px 0 $dark-bg !important; /* This hides the white gap */
-  overflow: hidden !important;
   
+  overflow: hidden !important;
   text-align: center !important;
   box-sizing: border-box !important;
 }
@@ -427,21 +450,39 @@ footer:after {
   100% { transform: translate(0); text-shadow: -2px -2px $red, 2px 2px $green; }
 }
 
-//HEADER GREEN
+//IDLE SCAN LINES
 @keyframes scanLine { 
-  0% { top: 0; opacity: 0; } 
-  5% { opacity: 1; } 
-  95% { opacity: 1; } 
-  100% { top: 100%; opacity: 0; }
+  0% { 
+    top: -50px; /* Start completely out of view */
+    opacity: 0; 
+  } 
+  10% { 
+    opacity: 1; /* Fade in quickly as it enters */
+  } 
+  90% { 
+    opacity: 1; /* Stay solid through the middle */
+  } 
+  100% { 
+    top: 100%;  /* End exactly at the bottom edge */
+    opacity: 0; /* Fade out just as it hits the floor */
+  }
 }
 
-//HEADER RED
+//SCAN LINE RED
 @keyframes fastPulse {
-  0%, 100% { filter: brightness(1); box-shadow: 0 0 10px $red; }
-  50% { filter: brightness(3); box-shadow: 0 0 40px $red, 0 0 60px rgba($red, 0.6); }
+  /* The "Cool" State */
+  0%, 100% { 
+    filter: brightness(1); 
+    box-shadow: 0 0 10px $red; 
+  }
+  /* The "Spark" State */
+  10%, 20% { 
+    filter: brightness(1.2) contrast(1.5); 
+    box-shadow: 0 0 25px $red, 0 0 50px rgba($red, 0.8);
+  }
 }
 
-//SCAN LINE GLITCH EFFECT
+//SCAN LINE GREEN
 @keyframes dataStutter {
   0%   { opacity: 0.8; }
   25%  { opacity: 0.3; }
@@ -452,17 +493,3 @@ footer:after {
     
 //CODE BLOCK FLICKER
 @keyframes staticFlicker { 0% { opacity: 0.5; } 50% { opacity: 0.8; } 100% { opacity: 0.5; } }
-
-//DIVIDER PULSE
-@keyframes laserPulse {
-  0%, 100% {
-    opacity: 0.6;
-    box-shadow: 0 0 8px rgba($red, 0.6);
-    transform: scaleX(0.98); /* Slight shrink */
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 15px rgba($red, 1), 0 0 30px rgba($red, 0.5);
-    transform: scaleX(1);    /* Full width */
-  }
-}
